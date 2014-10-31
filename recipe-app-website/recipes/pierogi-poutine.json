@@ -1,0 +1,41 @@
+{
+	"title": "Pierogi Poutine",
+	"photo": "http://storage.googleapis.com/recipe-app/img/recipes/pierogi-poutine.jpg",
+	"description": "Traditionally, poutine has three ingredients: french fries, cheese curd and gravy. This variation on the original adds pierogies, sour cream and bacon to give it a distinctive Polish flavor.",
+	"prep_time": "3 hours",
+	"prep_time_code": "PT3H",
+	"ingredients": [{
+		"name": "Canola oil",
+		"amount": "8 cups"
+	},{
+		"name": "Russet potatoes",
+		"preparation": "washed and dried",
+		"amount": "4 lb"
+	},{
+		"name": "Cheese perogies",
+		"amount": "1 dozen"
+	},{
+		"name": "Sour cream",
+		"amount": "1 cup"
+	},{
+		"name": "Bacon",
+		"amount": "8 strips"
+	}],
+	"instructions": [{
+		"description": "Cut potatoes into lengths of about 1/4\" x 1/4\" x 4\". Place in a large bowl, cover with cold water, and refrigerate for about 2 hours."
+	},{
+		"description": "Pour oil to a depth of 3\" in a 6-qt. Dutch oven, and heat over medium heat until a deep-fry thermometer reads 325 deg."
+	},{
+		"description": "In a medium saucepan, heat 2 tsp canola oil over medium high heat. Chop the bacon up into 1/2\" pieces and fry until starting to get crispy. "
+	},{
+		"description": "Boil the perogies in plenty of boiling water in a large pot. When they float remove with a slotted spoon to a plate."
+	},{
+		"description": "Heat a large nonstick pan with 2 tablespoon of canola oil over medium high heat. Brown the boiled perogies on both sides (about 4-5 minutes per side). Remove from the pan and drain on paper towels or a clean towel."
+	},{
+		"description": "Drain potatoes, and dry thoroughly with paper towels. Working in small batches, add potatoes and fry, tossing occasionally, until tender and slightly crisp, about 4 minutes."
+	},{
+		"description": "Drain on paper towels, and let cool for 20 minutes. Increase temperature to medium-high, and heat oil until it reads 375 deg. Working in small batches, return potatoes to oil, and fry, tossing occasionally, until crisp and golden brown, about 2 minutes."
+	},{
+		"description": "Transfer fries to paper towels to drain briefly, and then divide among serving bowls. Top each serving of fries with perogies, spoon sour cream on top and top with bacon."
+	}]
+}

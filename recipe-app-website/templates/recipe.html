@@ -1,0 +1,46 @@
+{% extends 'searchable.html' %}
+{% block meta %}
+	<link rel="alternate" href="android-app://com.recipe_app/http/recipe-app.com/recipe/{{recipe.id}}" />
+	<link rel="stylesheet" href="/css/recipe.css" />
+{% endblock %}
+{% block content %}
+<section vocab="http://schema.org/" typeof="Recipe">
+	<img property="image" src="{{recipe.photo}}" width="100%"/>
+  <h2 class="overlay">
+  	<span property="name">{{recipe.title}}<span>
+  	<div id="time"><meta property="prepTime" content="{{recipe.prep_time_code}}"/>{{recipe.prep_time}}</div>
+  </h2>
+  <div class="edge"></div>
+	<div class="inner">
+	  <table>
+	    <tr><td id="ingredients">
+	      <h3>Ingredients</h3>
+	      	{% for section in ingredient_sections %}
+	      		{% if section|length > 0 %}
+	      			<h4>For the {{section}}</h4>
+	      		{% endif %}
+	      		{% if ingredients[section]|length > 0 %}
+					<table>
+			        {% for ingredient in ingredients[section] %}
+			        	<tr property="ingredients">
+				        	<td class="ammount">{{ingredient.amount}} </td>
+				        	<td>{{ingredient.name}}{% if ingredient.preparation %}, {{ingredient.preparation}}{% endif %}</td>
+			        	</tr>
+			        {% endfor %}
+					</table>
+				{% endif %}
+			{% endfor %}
+		</td><td style="vertical-align:top" property="description">{{recipe.description|safe}}</td></tr>
+      </table>
+
+	    <div id="steps">
+	      <h3>Instructions</h3>
+	      <ol>
+	        {% for instruction in recipe.instructions %}
+	        <li property="recipeInstructions">{{ instruction['description'] }}</li>
+	        {% endfor %}
+	      </ol>
+	    </div>
+	</div>
+</section>
+{% endblock %}
