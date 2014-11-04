@@ -1,3 +1,19 @@
+/*
+ * Copyright 2014 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.recipe_app.client;
 
 import java.io.IOException;
@@ -23,6 +39,7 @@ import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -93,53 +110,58 @@ public class RecipeActivity extends Activity {
     @Override
     public void onStart(){
         super.onStart();
-        // Connect your client
-        mClient.connect();
 
-        // Define a title for your current page, shown in autocompletion UI
-        final String TITLE = recipe.getTitle();
-        final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
-        final Uri WEB_URL = Uri.parse(recipe.getUrl());
+        if (recipe != null) {
+            // Connect your client
+            mClient.connect();
 
-        // Call the App Indexing API view method
-        PendingResult<Status> result = AppIndex.AppIndexApi.view(mClient, this,
-                APP_URI, TITLE, WEB_URL, null);
+            // Define a title for your current page, shown in autocompletion UI
+            final String TITLE = recipe.getTitle();
+            final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
+            final Uri WEB_URL = Uri.parse(recipe.getUrl());
 
-        result.setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(Status status) {
-                if (status.isSuccess()) {
-                    Log.d(TAG, "App Indexing API: Recorded recipe "
-                            + recipe.getTitle() + " view successfully.");
-                } else {
-                    Log.e(TAG, "App Indexing API: There was an error recording the recipe view."
-                            + status.toString());
+            // Call the App Indexing API view method
+            PendingResult<Status> result = AppIndex.AppIndexApi.view(mClient, this,
+                    APP_URI, TITLE, WEB_URL, null);
+
+            result.setResultCallback(new ResultCallback<Status>() {
+                @Override
+                public void onResult(Status status) {
+                    if (status.isSuccess()) {
+                        Log.d(TAG, "App Indexing API: Recorded recipe "
+                                + recipe.getTitle() + " view successfully.");
+                    } else {
+                        Log.e(TAG, "App Indexing API: There was an error recording the recipe view."
+                                + status.toString());
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
     public void onStop(){
         super.onStop();
 
-        final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
-        PendingResult<Status> result = AppIndex.AppIndexApi.viewEnd(mClient, this, APP_URI);
+        if (recipe != null) {
+            final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
+            PendingResult<Status> result = AppIndex.AppIndexApi.viewEnd(mClient, this, APP_URI);
 
-        result.setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(Status status) {
-                if (status.isSuccess()) {
-                    Log.d(TAG, "App Indexing API: Recorded recipe "
-                            + recipe.getTitle() + " view end successfully.");
-                } else {
-                    Log.e(TAG, "App Indexing API: There was an error recording the recipe view."
-                            + status.toString());
+            result.setResultCallback(new ResultCallback<Status>() {
+                @Override
+                public void onResult(Status status) {
+                    if (status.isSuccess()) {
+                        Log.d(TAG, "App Indexing API: Recorded recipe "
+                                + recipe.getTitle() + " view end successfully.");
+                    } else {
+                        Log.e(TAG, "App Indexing API: There was an error recording the recipe view."
+                                + status.toString());
+                    }
                 }
-            }
-        });
+            });
 
-        mClient.disconnect();
+            mClient.disconnect();
+        }
     }
 
     private void showRecipe(Uri recipeUri) {
@@ -187,22 +209,29 @@ public class RecipeActivity extends Activity {
 
             // always close the cursor
             cursor.close();
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No match for deep link " + recipeUri.toString(),
+                    Toast.LENGTH_SHORT);
+            toast.show();
         }
 
-        // Create the adapter that will return a fragment for each of the steps of the recipe.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        if (recipe != null) {
+            // Create the adapter that will return a fragment for each of the steps of the recipe.
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.pager);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        // Set the recipe title
-        TextView recipeTitle = (TextView)findViewById(R.id.recipeTitle);
-        recipeTitle.setText(recipe.getTitle());
+            // Set the recipe title
+            TextView recipeTitle = (TextView) findViewById(R.id.recipeTitle);
+            recipeTitle.setText(recipe.getTitle());
 
-        // Set the recipe prep time
-        TextView recipeTime = (TextView)findViewById(R.id.recipeTime);
-        recipeTime.setText("  " + recipe.getPrepTime());
+            // Set the recipe prep time
+            TextView recipeTime = (TextView) findViewById(R.id.recipeTime);
+            recipeTime.setText("  " + recipe.getPrepTime());
+        }
     }
 
 
@@ -245,7 +274,11 @@ public class RecipeActivity extends Activity {
 
         @Override
         public int getCount() {
-            return recipe.getInstructions().size() + 1;
+            if (recipe != null) {
+                return recipe.getInstructions().size() + 1;
+            } else {
+                return 0;
+            }
         }
 
         @Override
@@ -288,6 +321,8 @@ public class RecipeActivity extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_recipe, container, false);
+
+            this.recipe = ((RecipeActivity)getActivity()).recipe;
 
 
             progressBar = (ProgressBar) rootView.findViewById(R.id.loading);
@@ -365,6 +400,8 @@ public class RecipeActivity extends Activity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.ingredients_fragment, container, false);
 
+            this.recipe = ((RecipeActivity)getActivity()).recipe;
+
             TableLayout table = (TableLayout)rootView.findViewById(R.id.ingredientsTable);
             for (Recipe.Ingredient ingredient : recipe.getIngredients()) {
                 TableRow row = (TableRow)inflater.inflate(R.layout.ingredients_row, null);
@@ -409,6 +446,8 @@ public class RecipeActivity extends Activity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.instructions_fragment, container, false);
             int sectionNumber = this.getArguments().getInt(ARG_SECTION_NUMBER);
+
+            this.recipe = ((RecipeActivity)getActivity()).recipe;
 
             TextView instructionTitle = (TextView)rootView.findViewById(R.id.instructionTitle);
             instructionTitle.setText("Step " + Integer.toString(sectionNumber - 1));

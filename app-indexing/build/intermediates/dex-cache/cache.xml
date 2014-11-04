@@ -38,17 +38,17 @@
         revision="20.0.0"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
     <item
-        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-b4238509ebdb6688085875ada6e22b514fdf9a58.jar"
-        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
         dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
         jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-b4238509ebdb6688085875ada6e22b514fdf9a58.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
     <item
         dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-5f30bd25f599baa4fff80ab1bb1a7a7e27498a76.jar"
         jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v13/20.0.0/libs/internal_impl-20.0.0.jar"
