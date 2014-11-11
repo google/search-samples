@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffc1d3df">
+
+    <it.gmariotti.cardslib.library.view.CardGridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="@dimen/carddemo_gplay_grid_columnwidth"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        card:list_card_layout_resourceID="@layout/carddemo_grid_gplay"
+        android:id="@+id/carddemo_grid_base1"
+        android:layout_margin="8dp" />
+
+</LinearLayout>

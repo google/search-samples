@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecipeActivity$PlaceholderFragment">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
+        android:id="@+id/recipe_image"
+        android:scaleType="centerCrop" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="30px"
+                android:id="@+id/scalloped_edge"
+                android:scaleType="fitXY"
+                android:src="@drawable/tileable_edge"
+                android:layout_marginTop="470dp"
+                android:background="@android:color/transparent" />
+
+            <LinearLayout
+                android:id="@+id/ingredients_fragment"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/instruction_fragment"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
