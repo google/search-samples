@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-d08e725237971d1cf4f2dfcc97b03e2a39ecc8e1.jar"
+        jar="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/exploded-aar/com.android.support/support-v13/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="27bbd3982cdfe4468a9bf99c8c773734a9049e33"/>
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/picasso-2.3.2-686037b8ee1b1eb5ec3ef088350de8bcc83b685a.jar"
+        jar="/Users/simister/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.3.2/d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27/picasso-2.3.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27"/>
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-baede0fa788ffb9d291fc868031370ae99135c78.jar"
+        jar="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/pre-dexed/debug/classes-5a7cd058fa42269391a0ae29f3d0f8d4431cfeee.jar"
+        jar="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+    <item
+        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-cedeaa9ada9f73ab26ff433097844715fa9980a3.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.1.11/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="0f700f6802ba1a1f1fa7ac26d5db0666a89d75a6"/>
+    <item
+        dex="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-fcbc735faa3b169fbd98f526f09789d9ecc8faf9.jar"
+        jar="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
+    <item
+        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-b4238509ebdb6688085875ada6e22b514fdf9a58.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/classes-aea44a8d03158b4488a93fc221297776112052f6.jar"
+        jar="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/classes-1a009257b98f4e15fbc46438963606d1aa6a31be.jar"
+        jar="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/exploded-aar/com.android.support/support-v13/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e128103d5281ddd26195a7f980b36d0d005a4e56"/>
+    <item
+        dex="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/pre-dexed/debug/classes-b523eeb2d4f41254cef57fce2a0a9e657a0c2ab7.jar"
+        jar="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="0c0c19759e5868604a3b4c2c0074ee9404d73c76"/>
+    <item
+        dex="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-6ef1a157e6aef04b5f059f61e1b416595cb6eeea.jar"
+        jar="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="5a8e01742aee890c56fe638ea7c921b91a3fdc62"/>
+    <item
+        dex="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/pre-dexed/debug/picasso-2.3.2-686037b8ee1b1eb5ec3ef088350de8bcc83b685a.jar"
+        jar="/Users/simister/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.3.2/d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27/picasso-2.3.2.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27"/>
+    <item
+        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-5f30bd25f599baa4fff80ab1bb1a7a7e27498a76.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v13/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="27bbd3982cdfe4468a9bf99c8c773734a9049e33"/>
+    <item
+        dex="/Users/simister/search-samples/recipe-app-start/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-ee576f91b45a6538d4156fc6e674b6f65034f74e.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e"/>
+    <item
+        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-351916b313fbc36520f8937afc2f378eb16be8f2.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-c37663fb57d307c247bb19d9b0baa67c7a71e09d.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v13/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e128103d5281ddd26195a7f980b36d0d005a4e56"/>
+    <item
+        dex="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/pre-dexed/debug/classes-47c8d4505af7ca9fa18f3fed8dedf50eec37aac4.jar"
+        jar="/Users/simister/Google Drive/Projects/TasyBytes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.1.11/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="0f700f6802ba1a1f1fa7ac26d5db0666a89d75a6"/>
+
+</pre-dex-items>
