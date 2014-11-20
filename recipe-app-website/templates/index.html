@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block meta %}
+  <link rel="stylesheet" href="/css/index.css" />
+{% endblock %}
+{% block header %}
+  <header>
+  </header>
+{% endblock %}
+{% block content %}
+<section>
+  <form action="/search" method="GET">
+      <input type="text" id="search" name="q" placeholder="Search for recipes" value="{{query}}" />
+  </form>
+  <a href="https://play.google.com/store/apps/details?id=com.recipe_app" target="_blank" class="badge">
+    <img alt="Get it on Google Play"
+         src="/img/en_app_rgb_wo_45.png" target="_blank" />
+  </a>
+</section>
+<script type="application/ld+json">
+{
+   "@context": "http://schema.org",
+   "@type": "WebSite",
+   "url": "http://recipe-app.com/",
+   "potentialAction": {
+     "@type": "SearchAction",
+     "target": "http://recipe-app.com/search?q={query}",
+     "query-input": "required name=query"
+   }
+}
+</script>
+{% endblock %}

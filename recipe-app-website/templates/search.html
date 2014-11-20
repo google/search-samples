@@ -1,0 +1,24 @@
+{% extends 'searchable.html' %}
+{% block meta %}
+	<link rel="stylesheet" href="/css/search.css" />
+{% endblock %}
+{% block content %}
+{% if results|length > 0 %}
+<ol id="search_results">
+	{% for result in results %}
+	<li>
+		<a href="/recipe/{{result.id}}" style="background-image:url('{{result.photo}}')">
+			<h2 class="overlay">{{result.title}}<div id="time">{{result.prep_time}}</div></h2>
+		</a>
+	</li>
+	{% endfor %}
+</ol>
+{% else %}
+<section>
+	<div class="inner">
+		<p>No results found for <strong>"{{query}}"</strong></p>
+	</div>
+</section>
+{% endif %}
+<div class="clear"></div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{
+	"title": "Wedge Salad",
+	"photo": "http://storage.googleapis.com/recipe-app/img/recipes/wedge-salad.jpg",
+	"description": "The Wedge salad is so easy to make and there are many variation that you can try. This one uses Romaine hearts instead of Iceberg lettuce and Pancetta instead of bacon.<p>The dressing can be made in large quantities and kept refridgerated and re-used. In a pinch you can find pre-made blue cheese dressing at the supermarket but they often tend to be too sweet or not have a strong enough blue cheese flavour.",
+	"prep_time": "35 minutes",
+	"prep_time_code": "PT35M",
+	"ingredients": [{
+		"name": "Blue cheese",
+		"amount": "4 oz",
+		"category": "dressing"
+	},{
+		"name": "Heavy cream",
+		"amount": "2 T",
+		"category": "dressing"
+	},{
+		"name": "Mayonnaise",
+		"amount": "2 T",
+		"category": "dressing"
+    },{
+        "name": "Buttermilk",
+		"amount": "2 T",
+		"category": "dressing"
+    },{
+        "name": "Canola oil",
+		"amount": "1 T",
+		"category": "dressing"
+    },{
+        "name": "Worcestershire sauce",
+		"amount": "1 tsp",
+		"category": "dressing"
+    },{
+        "name": "Hot sauce",
+		"amount": "1/4 tsp",
+		"category": "dressing"
+    },{
+        "name": "Shallot",
+        "preparation": "finely chopped",
+		"amount": "1",
+		"category": "dressing"
+	},{
+        "name": "salt",
+		"amount": "1/4 tsp",
+		"category": "dressing"
+    },{
+        "name": "pepper",
+		"amount": "1/4 tsp",
+		"category": "dressing"
+	},{
+		"name": "Romaine of lettuce",
+		"amount": "2 hearts",
+		"category": "salad"
+	},{
+		"name": "Pancetta",
+		"preparation": "finely chopped",
+		"amount": "1/2 cup",
+		"category": "salad"
+	},{
+		"name": "Cherry tomatoes",
+		"preparation": "halved",
+		"amount": "12",
+		"category": "salad"
+	},{
+		"name": "Scallions",
+		"preparation": "chopped",
+		"amount": "1/2 cup",
+		"category": "salad"
+	}],
+	"instructions": [{
+		"description": "To make the dressing, add the blue cheese, cream, mayonaise, buttermilk, oil, Worcestershire sauce, hot sauce, and shallots in the bowl of a food processor.  Process until smooth and creamy.  Season with salt and pepper.  Put in a bowl and set aside."
+	},{
+		"description": "Wash the Romaine hearts without seperating the leaves. Cut Romaine hearts once length-wise and once across and place quarters on the plate then top with the blue cheese dressing. "
+	},{
+		"description": "In a small fry pan, fry the pancetta until crispy."
+	},{
+		"description": "Arrange the tomatoes, pancetta, and scallions on top of the Romaine hearts.  Grind some fresh pepper on the top."
+	}]
+}

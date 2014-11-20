@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="12pt"
+    android:paddingBottom="12pt"
+    android:paddingLeft="20pt"
+    android:paddingRight="20pt"
+    android:minHeight="500dp"
+    android:background="#ffffffee"
+    android:id="@+id/ingredientsTable">
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/RecipeIngredients.Header"
+            android:text="Ingredients"
+            android:id="@+id/ingredientsHeader"
+            android:layout_column="0"
+            android:paddingBottom="20sp" />
+    </TableRow>
+
+</TableLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@drawable/main_header_selector"
+    android:clickable="true">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/RecipeHeader.Title"
+        android:id="@+id/recipeTitle"
+        android:layout_weight="0.11"
+        android:textColor="#ffffffff"
+        android:padding="10sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/RecipeHeader.Time"
+        android:id="@+id/recipeTime"
+        android:drawableStart="@drawable/timer"
+        android:layout_weight="0.11" />
+</LinearLayout>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block header %}
+  <header>
+    <div class="inner">
+        <a href="/"><img src="/img/logo.png" style="height:70px;width:188px"/></a>
+        {% if num_results > 0 %}
+        <div id="search" class="results">
+			<form action="/search" method="GET">
+				Found <strong>{{num_results}}</strong> result{%if num_results != 1%}s{%endif%} for <input type="text" name="q" placeholder="Search for recipes" value="{{query}}" />
+			</form>
+		</div>
+		{% else %}
+		<div id="search">
+			<form action="/search" method="GET">
+		      	<input type="text" name="q" placeholder="Search for recipes" value="{{query}}" />
+		    </form>
+		</div>
+		{% endif %}
+    </div>
+  </header>
+{% endblock %}

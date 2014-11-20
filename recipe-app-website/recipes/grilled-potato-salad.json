@@ -1,0 +1,76 @@
+{
+	"title": "Grilled Potato Salad with Black Garlic Vinaigrette",
+	"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad.jpg",
+	"description": "If you are looking for a different way to treat potatoes this summer, try grilling them. This recipe for grilled potato salad, is a fun twist on the classic, with a vinaigrette made from fermented black garlic.<br/></br/>The black garlic gives the lightly charred potatoes a unique flavor - earthy and subtly sweet. Pair this with crispy skinned grilled salmon, and a dollop of dill sour cream, and it's a match made in heaven.",
+	"prep_time": "35 minutes",
+	"prep_time_code": "PT35M",
+	"ingredients": [{
+		"name": "Baby potatos",
+		"amount": "1 1/2 lbs"
+	},{
+		"name": "Black garlic",
+		"amount": "4 cloves"
+	},{
+		"name": "Extra virgin olive oil",
+		"amount": "4 T"
+    },{
+        "name": "Salt",
+		"amount": "1/4 tsp"
+    },{
+        "name": "Black pepper",
+		"amount": "1/4 tsp"
+    },{
+        "name": "Rice wine vinegar",
+		"amount": "1 T"
+    },{
+        "name": "Chives",
+		"amount": "1 T"
+    },{
+        "name": "Fresh dill",
+		"amount": "2-3 T"
+	},{
+		"name": "Sour cream",
+		"amount": "1 cup",
+		"category": "dipping sauce"
+	},{
+		"name": "Lemon",
+		"preparation": "squeezed",
+		"amount": "1/2",
+		"category": "dipping sauce"
+	},{
+		"name": "Fresh dill",
+		"amount": "2-3 T",
+		"category": "dipping sauce"
+	},{
+		"name": "Shallot",
+		"preapartion": "chopped",
+		"amount": "1 T",
+		"category": "dipping sauce"
+	},{
+		"name": "Sugar",
+		"amount": "1/4 tsp",
+		"category": "dipping sauce"
+	}],
+	"instructions": [{
+		"description": "Preheat grill to med high heat.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-1.jpg"
+	},{
+		"description": "Blanch potatoes in salted boiling water, until just tender, about 10-15 minutes, depending on size.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-2.jpg"
+	},{
+		"description": "Mash black garlic with a fork with salt and 1 T oil, until it become a chunky paste. Add the remaining oil, vinegar, and pepper.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-3.jpg"
+	},{
+        "description": "Strain the tender potatoes, and toss with 1 T of the vinaigrette, just enough to lightly coat.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-4.jpg"
+	},{
+        "description": "Grill the potatoes until nicely charred.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-5.jpg"
+	},{
+        "description": "Toss with the rest of the vinaigrette, and fresh herbs.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-6.jpg"
+	},{
+        "description": "To make dill sour cream, whisk the sour cream with a little lemon zest, lemon juice, fresh dill, chopped shallot, salt and pepper to taste, and a pinch of sugar. Serve on the side.",
+		"photo": "http://storage.googleapis.com/recipe-app/img/recipes/grilled-potato-salad-7.jpg"
+	}]
+}

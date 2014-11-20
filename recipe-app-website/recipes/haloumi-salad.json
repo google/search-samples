@@ -1,0 +1,42 @@
+{
+	"title": "Pan-Fried Halloumi and Honeyed Tomato Salad",
+	"photo": "http://storage.googleapis.com/recipe-app/img/recipes/haloumi-salad.jpg",
+	"description": "Halloumi is a semi-hard, unripened brined cheese made from a mixture of goat's and sheep's milk. When pan-fried, it turns a wonderful golden brown. The hint of the sweet honey layered on top of the salty cheese and topped with fresh tomatoes is a treat for yout taste buds.",
+	"prep_time": "30 minutes",
+	"prep_time_code": "PT30M",
+	"ingredients": [{
+		"name": "Halloumi cheese",
+		"amount": "250 g"
+	},{
+		"name": "Flour",
+		"amount": "1 tsp"
+	},{
+		"name": "Canola oil",
+		"amount": "2 T"
+    },{
+        "name": "Cherry tomatoes",
+        "preparation": "thinly sliced",
+		"amount": "100 g"
+    },{
+        "name": "Radish sprouts",
+		"amount": "1/8 cup"
+    },{
+        "name": "Fresh basil",
+		"amount": "4-6 leaves"
+    },{
+        "name": "Extra virgin olive oil",
+		"amount": "2 tsp"
+	},{
+		"name": "Honey",
+		"amount": "2 tsp"
+	}],
+	"instructions": [{
+		"description": "Slice the halloumi into three or four slabs and dust in flour.."
+	},{
+		"description": "Heat the canola oil in a non-stick pan over a medium to low heat and, when hot, add the halloumi, a couple of slabs at a time. Fry for 30 seconds to 1 minute on each side, or until golden brown. Remove from the pan and drain on kitchen paper."
+	},{
+		"description": "Arrange the halloumi on a large plate, top with the sliced tomatoes, sprinkle over the radish sprouts and basil leaves."
+	},{
+		"description": "Drizzle with olive oil and honey and serve immediately."
+	}]
+}

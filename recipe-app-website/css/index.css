@@ -1,0 +1,37 @@
+section {
+	height: 423px;
+	margin: -150px auto 0.5em auto;
+	background-image: url('/img/splash.jpg');
+	background-size: 620px 423px;
+	padding: 0;
+}
+
+#search {
+	position: absolute;
+	top: 150px;
+	left: 50px;
+	width: 470px;
+	border: 0;
+	font-size: 1.5em;
+	font-weight: 100;
+	padding: 0.2em 0.5em 0.5em 0.7em;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-bottom: 1px solid rgba(255, 255, 255, 1.0);
+	background-image: url('/img/ic_search_white_48dp.png');
+	background-repeat: no-repeat;
+	background-size: 40px;
+	padding-left: 45px;
+	text-align: left;
+}
+
+#search ::shadow  {
+	font-family: 'Roboto', HelveticaNeue-Light, Helvetica, sans-serif;
+	font-weight: 200;
+}
+
+*::-webkit-input-placeholder {
+	font-family: 'Roboto', HelveticaNeue-Light, Helvetica, sans-serif;
+	color: rgba(255, 255, 255, 1.0);
+	font-weight: 200;
+}

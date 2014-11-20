@@ -1,0 +1,8 @@
+
+*.pyc
+
+*.apk
+
+*.bin
+
+*.lock
