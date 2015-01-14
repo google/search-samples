@@ -22,4 +22,5 @@ android {
 dependencies {
     compile 'com.android.support:support-v13:21.0.0'
     compile group:'com.squareup.picasso', name:'picasso', version:'2.3.2'
+    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }
