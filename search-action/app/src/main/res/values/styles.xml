@@ -4,13 +4,26 @@
     <style name="CustomActionBarTheme"
         parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textColorHint">#CCCCCC</item>
     </style>
 
     <!-- ActionBar styles -->
     <style name="MyActionBar"
         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@drawable/actionbar_background</item>
-        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:textColorHint">#CCCCCC</item>
+    </style>
+
+    <style name="CustomSearchView"
+        parent="@android:style/Widget.Holo">
+        <item name="android:textColorHint">#CCCCCC</item>
+    </style>
+
+    <style name="SearchResult.Title"  parent="@android:style/TextAppearance.Large.Inverse">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <!-- Base application theme. -->
@@ -81,16 +94,6 @@
         <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>
-    </style>
-
-    <style name="Birth.card.content_outer_layout" parent="@style/card.content_outer_layout">
-        <!--Style for Content View-->
-        <item name="android:minHeight">60dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_marginTop">@dimen/card_content_outer_view_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/card_content_outer_view_margin_bottom</item>
-        <item name="android:layout_marginLeft">@dimen/card_content_outer_view_margin_left</item>
-        <item name="android:layout_marginRight">@dimen/card_content_outer_view_margin_right</item>
     </style>
 
 </resources>
