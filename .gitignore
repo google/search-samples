@@ -6,3 +6,5 @@
 *.bin
 
 *.lock
+
+*.idea/misc.xml
