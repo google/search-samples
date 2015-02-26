@@ -77,7 +77,7 @@ class SearchResultsPage(webapp2.RequestHandler):
         clean_query = query.lower().strip()
         if clean_query.endswith('recipes'):
             clean_query = clean_query[:-7].strip()
-        for recipe_id in ['grilled-potato-salad', 'haloumi-salad', 'pierogi-poutine', 'wedge-salad']:
+        for recipe_id in ['grilled-potato-salad', 'haloumi-salad', 'pierogi-poutine', 'wedge-salad', 'malaga-paella']:
             recipe = load_recipe(recipe_id)
             if recipe['title'].lower().find(clean_query) >= 0:
                 results.append(recipe)

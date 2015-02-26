@@ -24,10 +24,14 @@ public class RecipeTable {
 
     // Database table
     public static final String TABLE = "recipes";
-    public static final String ID = TABLE + "._id";
-    public static final String TITLE = TABLE + ".title";
-    public static final String PHOTO = TABLE + ".photo";
-    public static final String PREP_TIME = TABLE + ".prep_time";
-    public static final String DESCRIPTION = TABLE + ".description";
-
+    public static final String ID_COLUMN = "_id";
+    public static final String ID = TABLE + "." + ID_COLUMN;
+    public static final String TITLE_COLUMN = "title";
+    public static final String TITLE = TABLE + "." + TITLE_COLUMN;
+    public static final String PHOTO_COLUMN = "photo";
+    public static final String PHOTO = TABLE + "." + PHOTO_COLUMN;
+    public static final String PREP_TIME_COLUMN = "prep_time";
+    public static final String PREP_TIME = TABLE + "." + PREP_TIME_COLUMN;
+    public static final String DESCRIPTION_COLUMN = "description";
+    public static final String DESCRIPTION = TABLE + "." + DESCRIPTION_COLUMN;
 }

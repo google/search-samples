@@ -24,41 +24,30 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.actions.SearchIntents;
 import com.recipe_app.R;
 import com.recipe_app.client.content_provider.RecipeContentProvider;
-import com.recipe_app.client.database.RecipeDatabaseHelper;
 import com.recipe_app.client.database.RecipeTable;
-import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import it.gmariotti.cardslib.library.internal.Card;
-import it.gmariotti.cardslib.library.internal.CardGridArrayAdapter;
-import it.gmariotti.cardslib.library.internal.CardHeader;
-import it.gmariotti.cardslib.library.internal.CardThumbnail;
-import it.gmariotti.cardslib.library.internal.base.BaseCard;
-import it.gmariotti.cardslib.library.view.CardGridView;
 
 /**
  * This Activity class is used to display a grid of search results for recipe searches.
  */
 public class SearchActivity extends Activity implements SearchView.OnQueryTextListener {
+
+    private static String GMS_SEARCH_ACTION = "com.google.android.gms.actions.SEARCH_ACTION";
+
+    private RecyclerView mRecyclerView;
+    private SearchResultAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     private SearchView mSearchView;
     private String mQuery;
@@ -69,13 +58,20 @@ public class SearchActivity extends Activity implements SearchView.OnQueryTextLi
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_search);
 
-        // Create the database if it doesn't exist yet
-        RecipeDatabaseHelper recipeDbHelper = new RecipeDatabaseHelper(this);
-        try {
-            recipeDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a grid layout manager
+        int numColumns = getResources().getInteger(R.integer.search_results_columns);
+        mLayoutManager = new GridLayoutManager(this, numColumns);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        mAdapter = new SearchResultAdapter();
+        mRecyclerView.setAdapter(mAdapter);
 
         onNewIntent(getIntent());
     }
@@ -83,36 +79,26 @@ public class SearchActivity extends Activity implements SearchView.OnQueryTextLi
     protected void onNewIntent(Intent intent) {
         String action = intent.getAction();
         if (action.equals(Intent.ACTION_SEARCH) ||
-            action.equals(SearchIntents.ACTION_SEARCH)) {
+            action.equals(GMS_SEARCH_ACTION)) {
             mQuery = intent.getStringExtra(SearchManager.QUERY);
             doSearch(mQuery);
         }
     }
 
     private void doSearch(String query) {
-        List<Card> cards = new ArrayList<Card>();
         Uri searchUri = RecipeContentProvider.CONTENT_URI.buildUpon()
                 .appendPath("search").appendEncodedPath(query).build();
-
-        Log.d("Search URI", searchUri.toString());
 
         String[] projection = { RecipeTable.ID, RecipeTable.TITLE,
                 RecipeTable.DESCRIPTION, RecipeTable.PHOTO,
                 RecipeTable.PREP_TIME};
         Cursor cursor = getContentResolver().query(searchUri, projection, null, null, null);
         cursor.moveToFirst();
+        mAdapter.clearResults();
         while (!cursor.isAfterLast()) {
             final Recipe recipe = Recipe.fromCursor(cursor);
-            GplayGridCard card = new GplayGridCard(this, recipe);
-            card.init();
-            cards.add(card);
+            mAdapter.addResult(recipe);
             cursor.moveToNext();
-        }
-
-        CardGridArrayAdapter mCardArrayAdapter = new CardGridArrayAdapter(this, cards);
-        CardGridView listView = (CardGridView) findViewById(R.id.carddemo_grid_base1);
-        if (listView != null) {
-            listView.setAdapter(mCardArrayAdapter);
         }
     }
 
@@ -152,71 +138,17 @@ public class SearchActivity extends Activity implements SearchView.OnQueryTextLi
         }
 
         mSearchView.setOnQueryTextListener(this);
+        mSearchView.setFocusable(false);
+        mSearchView.setFocusableInTouchMode(false);
     }
 
+    @Override
     public boolean onQueryTextChange(String newText) {
         return false;
     }
 
+    @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
-    }
-
-    public boolean onClose() {
-        return false;
-    }
-
-
-    public class GplayGridCard extends Card {
-
-        protected Recipe recipe;
-
-        public GplayGridCard(Context context, Recipe recipe) {
-            super(context, R.layout.carddemo_gplay_inner_content);
-            this.recipe = recipe;
-        }
-
-        public GplayGridCard(Context context, int innerLayout) {
-            super(context, innerLayout);
-        }
-
-        private void init() {
-            CardHeader header = new CardHeader(getContext());
-            header.setButtonOverflowVisible(true);
-            header.setTitle(recipe.getTitle());
-
-            addCardHeader(header);
-
-            GplayGridThumb thumbnail = new GplayGridThumb(getContext());
-            addCardThumbnail(thumbnail);
-
-            setOnClickListener(new OnCardClickListener() {
-                @Override
-                public void onClick(Card card, View view) {
-                    Intent intent = recipe.getViewIntent(view.getContext());
-                    startActivity(intent);
-                }
-            });
-        }
-
-        class GplayGridThumb extends CardThumbnail {
-
-            public GplayGridThumb(Context context) {
-                super(context);
-            }
-
-            @Override
-            public void setupInnerViewElements(ViewGroup parent, View viewImage) {
-
-                Log.d("Thumnail image", recipe.getPhoto());
-                Picasso.with(getContext())
-                        .load(recipe.getPhoto())
-                        .into((ImageView)viewImage);
-
-                viewImage.getLayoutParams().width = 250;
-                viewImage.getLayoutParams().height = 250;
-            }
-        }
-
     }
 }

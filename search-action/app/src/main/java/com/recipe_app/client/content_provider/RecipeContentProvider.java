@@ -18,13 +18,14 @@ package com.recipe_app.client.content_provider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
-import com.recipe_app.client.database.RecipeDatabaseHelper;
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.recipe_app.client.database.RecipeIngredientTable;
 import com.recipe_app.client.database.RecipeInstructionsTable;
 import com.recipe_app.client.database.RecipeTable;
@@ -155,5 +156,19 @@ public class RecipeContentProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
+    }
+
+    /**
+     * This helper loads the SQLite database included with the app
+     * in the assets folder.
+     */
+    public class RecipeDatabaseHelper extends SQLiteAssetHelper {
+
+        private static final String DATABASE_NAME = "recipes.db";
+        private static final int DATABASE_VERSION = 1;
+
+        public RecipeDatabaseHelper(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
     }
 }

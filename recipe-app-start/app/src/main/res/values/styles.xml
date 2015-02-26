@@ -1,6 +1,20 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- the theme applied to the application or activity -->
+    <style name="CustomActionBarTheme"
+        parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textColorHint">#CCCCCC</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/actionbar_background</item>
+        <item name="android:textColorHint">#CCCCCC</item>
+    </style>
+
+        <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
@@ -64,7 +78,7 @@
         <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
     </style>
 
-    <style name="toggleButton"  parent="@android:Theme.Black">
+    <style name="toggleButton"  parent="android:Theme.Black">
         <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>

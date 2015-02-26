@@ -6,3 +6,7 @@
 *.bin
 
 *.lock
+
+*.idea/misc.xml
+
+app-indexing/.idea/libraries/play_services_base_6_5_87.xml

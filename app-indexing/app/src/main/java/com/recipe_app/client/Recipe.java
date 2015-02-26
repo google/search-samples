@@ -16,25 +16,21 @@
 
 package com.recipe_app.client;
 
-import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.recipe_app.client.database.RecipeIngredientTable;
+import com.recipe_app.client.database.RecipeInstructionsTable;
+import com.recipe_app.client.database.RecipeTable;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by simister on 10/1/14.
+ * The {@link com.recipe_app.client.Recipe} class stores all the information about a recipe including a
+ * list of ingredients and all the steps required to prepare it.
  */
 public class Recipe {
 
@@ -109,6 +105,38 @@ public class Recipe {
         instructions.add(step);
     }
 
+    public Intent getViewIntent(Context context) {
+        Intent intent = new Intent(context, RecipeActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(getUrl()));
+        return intent;
+    }
+
+    /**
+     * Static helper method for populating attributes from a database cursor.
+     *
+     * @param cursor The cursor returned from a database query.
+     * @return A new {@link com.recipe_app.client.Recipe} object with the basic attributes populated.
+     */
+    public static Recipe fromCursor(Cursor cursor) {
+        Recipe recipe = new Recipe(null);
+        for (int c=0; c<cursor.getColumnCount(); c++) {
+            String columnName = cursor.getColumnName(c);
+            if (columnName.equals(RecipeTable.ID_COLUMN)) {
+                recipe.id = cursor.getString(c);
+            } else if (columnName.equals(RecipeTable.TITLE_COLUMN)) {
+                recipe.setTitle(cursor.getString(c));
+            } else if (columnName.equals(RecipeTable.DESCRIPTION_COLUMN)) {
+                recipe.setDescription(cursor.getString(c));
+            } else if (columnName.equals(RecipeTable.PHOTO_COLUMN)) {
+                recipe.setPhoto(cursor.getString(c));
+            } else if (columnName.equals(RecipeTable.PREP_TIME_COLUMN)) {
+                recipe.setPrepTime(cursor.getString(c));
+            }
+        }
+        return recipe;
+    }
+
     public static class Ingredient {
         private String amount;
         private String description;
@@ -127,6 +155,25 @@ public class Recipe {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        /**
+         * Static helper method for populating attributes from a database cursor.
+         *
+         * @param cursor The cursor returned from a database query.
+         * @return A new {@link com.recipe_app.client.Recipe.Ingredient} object with all attributes populated.
+         */
+        public static Ingredient fromCursor(Cursor cursor) {
+            Ingredient ingredient = new Ingredient();
+            for (int c=0; c<cursor.getColumnCount(); c++) {
+                String columnName = cursor.getColumnName(c);
+                if (columnName.equals(RecipeIngredientTable.AMOUNT_COLUMN)) {
+                    ingredient.setAmount(cursor.getString(c));
+                } else if (columnName.equals(RecipeIngredientTable.DESCRIPTION_COLUMN)) {
+                    ingredient.setDescription(cursor.getString(c));
+                }
+            }
+            return ingredient;
         }
     }
 
@@ -148,6 +195,25 @@ public class Recipe {
 
         public void setPhoto(String photo) {
             this.photo = photo;
+        }
+
+        /**
+         * Static helper method for populating attributes from a database cursor.
+         *
+         * @param cursor The cursor returned from a database query.
+         * @return A new {@link com.recipe_app.client.Recipe.Step} object with all attributes populated.
+         */
+        public static Step fromCursor(Cursor cursor) {
+            Step step = new Step();
+            for (int c=0; c<cursor.getColumnCount(); c++) {
+                String columnName = cursor.getColumnName(c);
+                if (columnName.equals(RecipeInstructionsTable.PHOTO_COLUMN)) {
+                    step.setPhoto(cursor.getString(c));
+                } else if (columnName.equals(RecipeInstructionsTable.DESCRIPTION_COLUMN)) {
+                    step.setDescription(cursor.getString(c));
+                }
+            }
+            return step;
         }
     }
 

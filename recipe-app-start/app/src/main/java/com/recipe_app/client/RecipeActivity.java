@@ -16,8 +16,6 @@
 
 package com.recipe_app.client;
 
-import java.io.IOException;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -25,8 +23,8 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,7 +41,6 @@ import android.widget.Toast;
 
 import com.recipe_app.R;
 import com.recipe_app.client.content_provider.RecipeContentProvider;
-import com.recipe_app.client.database.RecipeDatabaseHelper;
 import com.recipe_app.client.database.RecipeTable;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -74,15 +71,6 @@ public class RecipeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-
-        // Create the database if it doesn't exist yet
-        RecipeDatabaseHelper recipeDbHelper = new RecipeDatabaseHelper(this);
-        try {
-            recipeDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
-
     }
 
     private void showRecipe(Uri recipeUri) {
@@ -96,24 +84,26 @@ public class RecipeActivity extends Activity {
 
             recipe = Recipe.fromCursor(cursor);
 
-            String recipeId = recipeUri.getLastPathSegment();
-
-            Uri ingredientsUri = RecipeContentProvider.CONTENT_URI.buildUpon().appendPath("ingredients").appendPath(recipeId).build();
+            Uri ingredientsUri = RecipeContentProvider.CONTENT_URI.buildUpon().appendPath("ingredients").appendPath(recipe.getId()).build();
             Cursor ingredientsCursor = getContentResolver().query(ingredientsUri, projection, null, null, null);
             if (ingredientsCursor != null && ingredientsCursor.moveToFirst()) {
                 do {
-                    Recipe.Ingredient ingredient = Recipe.Ingredient.fromCursor(ingredientsCursor);
+                    Recipe.Ingredient ingredient = new Recipe.Ingredient();
+                    ingredient.setAmount(ingredientsCursor.getString(0));
+                    ingredient.setDescription(ingredientsCursor.getString(1));
                     recipe.addIngredient(ingredient);
                     ingredientsCursor.moveToNext();
                 } while (!ingredientsCursor.isAfterLast());
                 ingredientsCursor.close();
             }
 
-            Uri instructionsUri = RecipeContentProvider.CONTENT_URI.buildUpon().appendPath("instructions").appendPath(recipeId).build();
+            Uri instructionsUri = RecipeContentProvider.CONTENT_URI.buildUpon().appendPath("instructions").appendPath(recipe.getId()).build();
             Cursor instructionsCursor = getContentResolver().query(instructionsUri, projection, null, null, null);
             if (instructionsCursor != null && instructionsCursor.moveToFirst()) {
                 do {
-                    Recipe.Step step = Recipe.Step.fromCursor(cursor);
+                    Recipe.Step step = new Recipe.Step();
+                    step.setDescription(instructionsCursor.getString(1));
+                    step.setPhoto(instructionsCursor.getString(2));
                     recipe.addStep(step);
                     instructionsCursor.moveToNext();
                 } while (!instructionsCursor.isAfterLast());
@@ -146,27 +136,6 @@ public class RecipeActivity extends Activity {
             recipeTime.setText("  " + recipe.getPrepTime());
         }
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.recipe, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

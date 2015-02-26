@@ -28,7 +28,7 @@
             android:src="@drawable/splash_logo"
             android:layout_alignParentBottom="false"
             android:layout_alignParentEnd="true"
-             />
+            />
 
         <SearchView
             android:layout_width="fill_parent"
@@ -37,7 +37,10 @@
             android:iconifiedByDefault="false"
             android:background="#4a000000"
             android:queryHint="Search for recipes"
-            android:id="@+id/homeSearch" />
+            android:id="@+id/homeSearch"
+            android:theme="@style/CustomSearchView"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
 
         </LinearLayout>
 

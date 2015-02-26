@@ -13,7 +13,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,6 +21,7 @@ android {
 
 dependencies {
     compile 'com.android.support:support-v13:21.0.0'
-    compile 'com.google.android.gms:play-services:6.1.11'
+    compile 'com.google.android.gms:play-services-appindexing:6.5.87'
     compile group:'com.squareup.picasso', name:'picasso', version:'2.3.2'
+    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }

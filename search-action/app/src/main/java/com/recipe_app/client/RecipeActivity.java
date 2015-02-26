@@ -16,8 +16,6 @@
 
 package com.recipe_app.client;
 
-import java.io.IOException;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -25,8 +23,8 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +46,6 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.recipe_app.R;
 import com.recipe_app.client.content_provider.RecipeContentProvider;
-import com.recipe_app.client.database.RecipeDatabaseHelper;
 import com.recipe_app.client.database.RecipeTable;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -71,12 +68,12 @@ public class RecipeActivity extends Activity {
      * may be best to switch to a
      * {@link android.support.v13.app.FragmentStatePagerAdapter}.
      */
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    ViewPager mViewPager;
+    private ViewPager mViewPager;
 
     private Recipe recipe;
 
@@ -86,14 +83,6 @@ public class RecipeActivity extends Activity {
         setContentView(R.layout.activity_recipe);
 
         mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.APP_INDEX_API).build();
-
-        // Create the database if it doesn't exist yet
-        RecipeDatabaseHelper recipeDbHelper = new RecipeDatabaseHelper(this);
-        try {
-            recipeDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
 
         onNewIntent(getIntent());
     }
@@ -229,27 +218,6 @@ public class RecipeActivity extends Activity {
             recipeTime.setText("  " + recipe.getPrepTime());
         }
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.recipe, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
