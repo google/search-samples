@@ -1,0 +1,90 @@
+{
+	"title": "Málaga Paella",
+	"photo": "http://storage.googleapis.com/recipe-app/img/recipes/malaga-paella.jpg",
+	"description": "This is a recipe for seafood paella inspired by the wonderful Paella that is made in Málaga, Spain. Paella originated in Valencia and is widely considered to be th national dish of Spain.",
+	"prep_time": "1 hour",
+	"prep_time_code": "PT1H",
+	"ingredients": [{
+		"name": "Garlic",
+		"amount": "1 head"
+	},{
+		"name": "Extra virgin olive oil",
+		"amount": "1/2 cup"
+	},{
+		"name": "Brown onions",
+		"preparation": "diced",
+		"amount": "1 1/2"
+	},{
+		"name": "Thyme",
+		"amount": "10 sprigs"
+	},{
+		"name": "Red capsicums",
+		"preparation": "diced",
+		"amount": "1 1/2"
+	},{
+		"name": "Green capsicums",
+		"preparation": "diced",
+		"amount": "1 1/2"
+	},{
+		"name": "Medium tomatoes",
+		"preparation": "peeled, diced and seeded",
+		"amount": "5"
+	},{
+		"name": "Paella rice",
+		"amount": "400g"
+	},{
+		"name": "Fish stock",
+		"amount": "5 3/4 cups"
+	},{
+		"name": "Tomato paste",
+		"amount": "1 tbsp"
+	},{
+		"name": "Calamari pieces",
+		"amount": "400 g"
+	},{
+		"name": "Blue eye fish",
+		"preparation": "cubed",
+		"amount": "500 g"
+	},{
+		"name": "Broad beans",
+		"amount": "1 cup"
+	},{
+		"name": "Large green prawns",
+		"amount": "12"
+	},{
+		"name": "Toasted saffron",
+		"amount": "½ tbsp"
+	},{
+		"name": "Mussels",
+		"amount": "12"
+	},{
+		"name": "Clams",
+		"amount": "600 g"
+	},{
+		"name": "Parsley",
+		"preparation": "chopped",
+		"amount": "1/2 cup"
+	},{
+		"name": "Lemon wedges",
+		"preparation": "chopped",
+		"amount": "12"
+	},{
+		"name": "Salt",
+		"amount": "1 tbsp"
+	}],
+	"instructions": [{
+		"description": "Place the paella pan on low heat. Position the head of garlic in the centre of the pan and pour the oil over the garlic, spreading the oil a bit. Add the diced onion and stir briefly. Add the thyme and cook for the about 5 minutes."
+	},{
+		"description": "Add the red and green capsicum and season with salt. Stir briefly and cook for 10 minutes."
+	},{
+		"description": "Add the tomato and stir in, then cook for a few minutes more. Add the rice and stir for 2 minutes. Add the fish stock mixed with the tomato paste."
+	},{
+		"description": "Add the calamari, the fish and the broad beans. Place the prawns neatly on top and add the saffron stock mixture. Top with the mussels and clams and simmer until the shells have opened, the seafood is cooked and the rice is tender."
+	},{
+		"description": "It's a good idea to cover the paella with foil or a lid for the last 5 minutes of the cooking."
+	},{
+		"description": "Add plenty of chopped parsley and cover with one or two tea towels. Turn off the heat and rest the rice for 5-10 minutes."
+	},{
+		"description": "Serve with lemon wedges."
+	}]
+}

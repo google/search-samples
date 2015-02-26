@@ -23,11 +23,11 @@
         <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-3fe5ea90f335bfa629fd93b30046ffbb5ed67e7e.jar" />
     </item>
     <item
-        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.1.11/classes.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/6.5.87/classes.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="0f700f6802ba1a1f1fa7ac26d5db0666a89d75a6">
-        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-cedeaa9ada9f73ab26ff433097844715fa9980a3.jar" />
+        sha1="5bc3dc6df8dea1403940943370da97a2dc574881">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-53327d8d85acd3b77bb5f589d08df639bea8239a.jar" />
     </item>
     <item
         jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
@@ -42,6 +42,13 @@
         revision="21.0.0"
         sha1="5a8e01742aee890c56fe638ea7c921b91a3fdc62">
         <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-5aa3e05be39911021df51d132d6cd13b40026db8.jar" />
+    </item>
+    <item
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="95482e7c792a7c0d5a9d5461e97726bd54fe9549">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-15de02932cf9296b8180a8e6e4ded7965c205374.jar" />
     </item>
     <item
         jar="/Users/simister/.gradle/caches/modules-2/files-2.1/com.readystatesoftware.sqliteasset/sqliteassethelper/2.0.1/d5f02e4a4d65ec0fbb339f2e4228723d1540bb9f/sqliteassethelper-2.0.1.jar"

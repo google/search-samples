@@ -142,15 +142,13 @@ public class SearchActivity extends Activity implements SearchView.OnQueryTextLi
         mSearchView.setFocusableInTouchMode(false);
     }
 
+    @Override
     public boolean onQueryTextChange(String newText) {
         return false;
     }
 
+    @Override
     public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    public boolean onClose() {
         return false;
     }
 }
