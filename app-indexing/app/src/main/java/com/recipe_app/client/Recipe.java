@@ -105,13 +105,6 @@ public class Recipe {
         instructions.add(step);
     }
 
-    public Intent getViewIntent(Context context) {
-        Intent intent = new Intent(context, RecipeActivity.class);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(getUrl()));
-        return intent;
-    }
-
     /**
      * Static helper method for populating attributes from a database cursor.
      *
