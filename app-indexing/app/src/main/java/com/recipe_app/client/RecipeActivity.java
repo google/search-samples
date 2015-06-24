@@ -39,6 +39,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -101,7 +102,6 @@ public class RecipeActivity extends Activity {
     @Override
     public void onStart(){
         super.onStart();
-
         if (recipe != null) {
             // Connect your client
             mClient.connect();
@@ -109,11 +109,11 @@ public class RecipeActivity extends Activity {
             // Define a title for your current page, shown in autocompletion UI
             final String TITLE = recipe.getTitle();
             final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
-            final Uri WEB_URL = Uri.parse(recipe.getUrl());
+
+            Action viewAction = Action.newAction(Action.TYPE_VIEW, TITLE, APP_URI);
 
             // Call the App Indexing API view method
-            PendingResult<Status> result = AppIndex.AppIndexApi.view(mClient, this,
-                    APP_URI, TITLE, WEB_URL, null);
+            PendingResult<Status> result = AppIndex.AppIndexApi.start(mClient, viewAction);
 
             result.setResultCallback(new ResultCallback<Status>() {
                 @Override
@@ -132,11 +132,12 @@ public class RecipeActivity extends Activity {
 
     @Override
     public void onStop(){
-        super.onStop();
-
         if (recipe != null) {
+            final String TITLE = recipe.getTitle();
             final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
-            PendingResult<Status> result = AppIndex.AppIndexApi.viewEnd(mClient, this, APP_URI);
+
+            Action viewAction = Action.newAction(Action.TYPE_VIEW, TITLE, APP_URI);
+            PendingResult<Status> result = AppIndex.AppIndexApi.end(mClient, viewAction);
 
             result.setResultCallback(new ResultCallback<Status>() {
                 @Override
@@ -152,6 +153,7 @@ public class RecipeActivity extends Activity {
             });
 
             mClient.disconnect();
+            super.onStop();
         }
     }
 

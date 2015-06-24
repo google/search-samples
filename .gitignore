@@ -7,6 +7,10 @@
 
 *.lock
 
-*.idea/misc.xml
+**.idea/**.xml
 
-app-indexing/.idea/libraries/play_services_base_6_5_87.xml
+**.gradle/**.properties
+
+**/build/intermediates/**
+
+

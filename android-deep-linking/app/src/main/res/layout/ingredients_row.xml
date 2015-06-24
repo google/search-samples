@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow style="@style/RecipeIngredients.Row"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="16sp"
+    android:paddingBottom="6dp">
+    <TextView
+        style="@style/RecipeIngredients.Measurement"
+        android:id="@+id/attrib_name"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:textStyle="bold"/>
+    <TextView
+        style="@style/RecipeIngredients.Description"
+        android:id="@+id/attrib_value"
+        android:gravity="left"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:textStyle="normal"/>
+</TableRow>

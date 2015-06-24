@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-871e7c84abc25326beef019e110aea3dd101154c.jar" />
+    </item>
+    <item
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-ba56ceb81c2b24fb92b262ee2959bb1ad0f5e8a2.jar" />
+    </item>
+    <item
         jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.0"
@@ -16,25 +30,18 @@
         <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/picasso-2.3.2-686037b8ee1b1eb5ec3ef088350de8bcc83b685a.jar" />
     </item>
     <item
-        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-3fe5ea90f335bfa629fd93b30046ffbb5ed67e7e.jar" />
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-a780edeb44973f156ef6389d6059ac0224235313.jar" />
     </item>
     <item
-        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/6.5.87/classes.jar"
+        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="5bc3dc6df8dea1403940943370da97a2dc574881">
-        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-53327d8d85acd3b77bb5f589d08df639bea8239a.jar" />
-    </item>
-    <item
-        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-509a146d89269af24b1ce6805f40b99c0903dfbd.jar" />
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-e72398a3915cd3805de93787ea0b311dffaf5bcf.jar" />
     </item>
     <item
         jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.0/libs/internal_impl-21.0.0.jar"
@@ -44,13 +51,6 @@
         <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-5aa3e05be39911021df51d132d6cd13b40026db8.jar" />
     </item>
     <item
-        jar="/Users/simister/search-samples/app-indexing/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/6.5.87/classes.jar"
-        jumboMode="false"
-        revision="21.0.0"
-        sha1="95482e7c792a7c0d5a9d5461e97726bd54fe9549">
-        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/classes-15de02932cf9296b8180a8e6e4ded7965c205374.jar" />
-    </item>
-    <item
         jar="/Users/simister/.gradle/caches/modules-2/files-2.1/com.readystatesoftware.sqliteasset/sqliteassethelper/2.0.1/d5f02e4a4d65ec0fbb339f2e4228723d1540bb9f/sqliteassethelper-2.0.1.jar"
         jumboMode="false"
         revision="21.0.0"
@@ -58,11 +58,11 @@
         <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/sqliteassethelper-2.0.1-2d53245686513369c5f048238a0102802be99ba0.jar" />
     </item>
     <item
-        jar="/Users/simister/Android SDK/android-sdk_1276678_mac-x86/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jar="/Users/simister/Android SDK/android-sdk_1276678_mac-x86/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="21.0.0"
-        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
-        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-869df6d7d171a45419be961615f22a9479aa1046.jar" />
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/simister/search-samples/app-indexing/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-ee861a397745088e13af5d620cc0690eeb26492c.jar" />
     </item>
 
 </items>
