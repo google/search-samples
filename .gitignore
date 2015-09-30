@@ -7,10 +7,13 @@
 
 *.lock
 
-**.idea/**.xml
+*.iml
 
-**.gradle/**.properties
+.gradle
 
-**/build/intermediates/**
+.idea
 
+build
+
+local.properties
 
