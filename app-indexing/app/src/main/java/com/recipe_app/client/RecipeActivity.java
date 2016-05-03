@@ -57,7 +57,7 @@ import com.squareup.picasso.Picasso;
 public class RecipeActivity extends Activity {
 
     private static final String TAG = RecipeActivity.class.getName();
-    private static final Uri BASE_APP_URI = Uri.parse("android-app://com.recipe_app/http/recipe-app.com/recipe/");
+    private static final Uri BASE_APP_URI = Uri.parse("http://recipe-app.com/recipe/");
 
     private GoogleApiClient mClient;
 
@@ -83,7 +83,7 @@ public class RecipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
 
-        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.APP_INDEX_API).build();
+        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         onNewIntent(getIntent());
     }
