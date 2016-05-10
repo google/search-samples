@@ -57,7 +57,7 @@ import com.squareup.picasso.Picasso;
 public class RecipeActivity extends Activity {
 
     private static final String TAG = RecipeActivity.class.getName();
-    private static final Uri BASE_APP_URI = Uri.parse("http://recipe-app.com/recipe/");
+    private static final Uri BASE_URL = Uri.parse("http://recipe-app.com/recipe/");
 
     private GoogleApiClient mClient;
 
@@ -108,7 +108,7 @@ public class RecipeActivity extends Activity {
 
             // Define a title for your current page, shown in autocompletion UI
             final String TITLE = recipe.getTitle();
-            final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
+            final Uri APP_URI = BASE_URL.buildUpon().appendPath(recipe.getId()).build();
 
             Action viewAction = Action.newAction(Action.TYPE_VIEW, TITLE, APP_URI);
 
@@ -119,10 +119,10 @@ public class RecipeActivity extends Activity {
                 @Override
                 public void onResult(Status status) {
                     if (status.isSuccess()) {
-                        Log.d(TAG, "App Indexing API: Recorded recipe "
+                        Log.d(TAG, "App Indexing API: Indexed recipe "
                                 + recipe.getTitle() + " view successfully.");
                     } else {
-                        Log.e(TAG, "App Indexing API: There was an error recording the recipe view."
+                        Log.e(TAG, "App Indexing API: There was an error indexing the recipe view."
                                 + status.toString());
                     }
                 }
@@ -134,7 +134,7 @@ public class RecipeActivity extends Activity {
     public void onStop(){
         if (recipe != null) {
             final String TITLE = recipe.getTitle();
-            final Uri APP_URI = BASE_APP_URI.buildUpon().appendPath(recipe.getId()).build();
+            final Uri APP_URI = BASE_URL.buildUpon().appendPath(recipe.getId()).build();
 
             Action viewAction = Action.newAction(Action.TYPE_VIEW, TITLE, APP_URI);
             PendingResult<Status> result = AppIndex.AppIndexApi.end(mClient, viewAction);
@@ -143,10 +143,10 @@ public class RecipeActivity extends Activity {
                 @Override
                 public void onResult(Status status) {
                     if (status.isSuccess()) {
-                        Log.d(TAG, "App Indexing API: Recorded recipe "
+                        Log.d(TAG, "App Indexing API: Indexed recipe "
                                 + recipe.getTitle() + " view end successfully.");
                     } else {
-                        Log.e(TAG, "App Indexing API: There was an error recording the recipe view."
+                        Log.e(TAG, "App Indexing API: There was an error indexing the recipe view."
                                 + status.toString());
                     }
                 }
