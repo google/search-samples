@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.recipe_app"
-        minSdkVersion 17
+        minSdkVersion 23
         targetSdkVersion 23
         versionCode 2
         versionName "1.0"
