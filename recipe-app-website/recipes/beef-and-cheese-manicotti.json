@@ -1,0 +1,82 @@
+{
+    "title":"Italian Beef and Cheese Manicotti",
+    "photo":"http://storage.googleapis.com/recipe-app/img/recipes/beef-manicotti.jpg",
+    "description":"Manicotti pasta stuffed with a beef and ricotta mixture and baked in a red marinara sauce.",
+    "prep_time":"55 minutes",
+    "prep_time_code":"PT55M",
+    "ingredients":[
+        {
+            "name":"Olive oil",
+            "amount":"4 tsp"
+        },
+        {
+            "name":"Medium onion",
+            "amount":"1",
+            "preparation":"chopped"
+        },
+        {
+            "name":"Ground beef",
+            "amount":"1 lbs"
+        },
+        {
+            "name":"Manicotti",
+            "amount":"14 (8oz pkg)"
+        },
+        {
+            "name":"Whole milk ricotta",
+            "amount":"1 (15oz pkg)"
+        },
+        {
+            "name":"Mozzarella",
+            "amount":"3 cups",
+            "preparation":"shredded"
+        },
+        {
+            "name":"Parmesan",
+            "amount":"1 cup",
+            "preparation":"grated"
+        },
+        {
+            "name":"Italian parsley leaves",
+            "preparation":"chopped",
+            "amount":"2 T"
+        },
+        {
+            "name":"Garlic cloves",
+            "preparation":"minced",
+            "amount":"2"
+        },
+        {
+            "name":"Marinara sauce",
+            "amount":"3 cups"
+        },
+        {
+            "name":"Butter",
+            "preparation":"cut into pieces",
+            "amount":"2 T"
+        }
+    ],
+    "instructions":[
+        {
+            "description":"Heat a heavy medium skillet over medium heat. Add 1 tsp of the olive oil, onion and ground beef. Saute until the meat browns and the onions are translucent, about 5 minutes. Remove from the heat, and let it sit."
+        },
+        {
+            "description":"Brush 1 tsp of oil over a large baking sheet. Cook the manicotti in a large pot of boiling, salted water until slightly softened, but still very firm to the bite, about 4 to 6 minutes. Using a slotted spoon, transfer the manicotti from the pot to the oiled baking sheet and cool."
+        },
+        {
+            "description":"Combine the ricotta, 1 1/2 to 2 cups mozzarella cheese, 1/2 cup Parmesan, and parsley. Add the garlic, salt, and pepper to taste, and mix. Stir the cooled meat mixture into the cheese mixture."
+        },
+        {
+            "description":"Preheat the oven to 350 degrees fahrenheit."
+        },
+        {
+            "description":"Brush the remaining 2 tsp of oil over a 13\" x 9\" x 2\" glass baking dish. Spoon 1 1/2 cups of the marinara sauce over the bottom of the prepared dish. Fill the manicotti with the cheese-meat mixture. Arrange the stuffed pasta in a single layer in the prepared dish and spoon the remaining sauce over."
+        },
+        {
+            "description":"Sprinkle the remaining 1 1/2 cups of mozzarella cheese, then the remaining 1/2 cup of Parmesan over the stuffed pasta. Dot entire dish with the butter pieces."
+        },
+        {
+            "description":"Bake the manicotti uncovered until heated through and the sauce bubbles on the sides of the dish, about 30 to 35 minutes. Let the manicotti stand for 5 minutes, then serve."
+        }
+    ]
+}

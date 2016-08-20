@@ -58,7 +58,7 @@ class RecipePage(webapp2.RequestHandler):
                 ingredient_section.append(ingredient)
             else:
                 ingredients_by_section[''].append(ingredient)
-        
+
         template_values = {
             'title': recipe['title'],
             'recipe': recipe,
@@ -73,11 +73,13 @@ class RecipePage(webapp2.RequestHandler):
 class SearchResultsPage(webapp2.RequestHandler):
     def get(self):
         query = self.request.get('q')
+        available_recipes = ['grilled-potato-salad', 'haloumi-salad', 'pierogi-poutine',
+                            'wedge-salad', 'malaga-paella', 'beef-and-cheese-manicotti']
         results = []
         clean_query = query.lower().strip()
         if clean_query.endswith('recipes'):
             clean_query = clean_query[:-7].strip()
-        for recipe_id in ['grilled-potato-salad', 'haloumi-salad', 'pierogi-poutine', 'wedge-salad', 'malaga-paella']:
+        for recipe_id in available_recipes:
             recipe = load_recipe(recipe_id)
             if recipe['title'].lower().find(clean_query) >= 0:
                 results.append(recipe)

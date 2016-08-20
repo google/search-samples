@@ -4,6 +4,9 @@
 	"description": "Traditionally, poutine has three ingredients: french fries, cheese curd and gravy. This variation on the original adds pierogies, sour cream and bacon to give it a distinctive Polish flavor.",
 	"prep_time": "3 hours",
 	"prep_time_code": "PT3H",
+	"total_time": "3 hours",
+	"total_time_code": "PT3H",
+	"recipe_yield": "4",
 	"ingredients": [{
 		"name": "Canola oil",
 		"amount": "8 cups"
