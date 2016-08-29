@@ -24,12 +24,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -39,12 +38,15 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.appindexing.Action;
+import com.google.firebase.appindexing.FirebaseAppIndex;
+import com.google.firebase.appindexing.FirebaseUserActions;
+import com.google.firebase.appindexing.Indexable;
+import com.google.firebase.appindexing.builders.Actions;
+import com.google.firebase.appindexing.builders.Indexables;
 import com.recipe_app.R;
 import com.recipe_app.client.content_provider.RecipeContentProvider;
 import com.recipe_app.client.database.RecipeTable;
@@ -58,8 +60,6 @@ public class RecipeActivity extends Activity {
 
     private static final String TAG = RecipeActivity.class.getName();
     private static final Uri BASE_URL = Uri.parse("http://recipe-app.com/recipe/");
-
-    private GoogleApiClient mClient;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -83,8 +83,6 @@ public class RecipeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
 
-        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
         onNewIntent(getIntent());
     }
 
@@ -99,32 +97,39 @@ public class RecipeActivity extends Activity {
         }
     }
 
+    private Action getViewAction() {
+        return Actions.newView(recipe.getTitle(),
+                BASE_URL.buildUpon().appendPath(recipe.getId()).build().toString());
+    }
+
     @Override
     public void onStart(){
         super.onStart();
         if (recipe != null) {
-            // Connect your client
-            mClient.connect();
+            Indexable recipeToIndex = new Indexable.Builder()
+                    .setName(recipe.getTitle())
+                    .setUrl(BASE_URL.buildUpon().appendPath(recipe.getId()).build().toString())
+                    .setImage(recipe.getPhoto())
+                    .setDescription(recipe.getDescription())
+                    .build();
 
-            // Define a title for your current page, shown in autocompletion UI
-            final String TITLE = recipe.getTitle();
-            final Uri APP_URI = BASE_URL.buildUpon().appendPath(recipe.getId()).build();
+            FirebaseAppIndex.getInstance().update(recipeToIndex);
 
-            Action viewAction = Action.newAction(Action.TYPE_VIEW, TITLE, APP_URI);
+            Task<Void> task = FirebaseUserActions.getInstance().start(getViewAction());
 
-            // Call the App Indexing API view method
-            PendingResult<Status> result = AppIndex.AppIndexApi.start(mClient, viewAction);
-
-            result.setResultCallback(new ResultCallback<Status>() {
+            task.addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
-                public void onResult(Status status) {
-                    if (status.isSuccess()) {
-                        Log.d(TAG, "App Indexing API: Indexed recipe "
-                                + recipe.getTitle() + " view successfully.");
-                    } else {
-                        Log.e(TAG, "App Indexing API: There was an error indexing the recipe view."
-                                + status.toString());
-                    }
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "App Indexing API: Successfully loaded recipe start view for "
+                            + recipe.getTitle() + " to index");
+                }
+            });
+
+            task.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e(TAG, "App Indexing API: There was an error loading recipe start view" +
+                            " to index. " + exception.getMessage());
                 }
             });
         }
@@ -133,28 +138,25 @@ public class RecipeActivity extends Activity {
     @Override
     public void onStop(){
         if (recipe != null) {
-            final String TITLE = recipe.getTitle();
-            final Uri APP_URI = BASE_URL.buildUpon().appendPath(recipe.getId()).build();
+            Task<Void> task = FirebaseUserActions.getInstance().end(getViewAction());
 
-            Action viewAction = Action.newAction(Action.TYPE_VIEW, TITLE, APP_URI);
-            PendingResult<Status> result = AppIndex.AppIndexApi.end(mClient, viewAction);
-
-            result.setResultCallback(new ResultCallback<Status>() {
+            task.addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
-                public void onResult(Status status) {
-                    if (status.isSuccess()) {
-                        Log.d(TAG, "App Indexing API: Indexed recipe "
-                                + recipe.getTitle() + " view end successfully.");
-                    } else {
-                        Log.e(TAG, "App Indexing API: There was an error indexing the recipe view."
-                                + status.toString());
-                    }
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "App Indexing API: Successfully loaded recipe end view for "
+                            + recipe.getTitle() + " to index");
                 }
             });
 
-            mClient.disconnect();
-            super.onStop();
+            task.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e(TAG, "App Indexing API: There was an error loading recipe end view to index."
+                            + exception.getMessage());
+                }
+            });
         }
+        super.onStop();
     }
 
     private void showRecipe(Uri recipeUri) {
