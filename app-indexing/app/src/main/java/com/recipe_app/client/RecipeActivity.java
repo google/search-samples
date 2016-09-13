@@ -78,6 +78,7 @@ public class RecipeActivity extends Activity {
 
     private Recipe recipe;
 
+    // [START onCreate_snippet]
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +88,9 @@ public class RecipeActivity extends Activity {
 
         onNewIntent(getIntent());
     }
+    // [END onCreate_snippet]
 
+    // [START onNewIntent_snippet]
     protected void onNewIntent(Intent intent) {
         String action = intent.getAction();
         String data = intent.getDataString();
@@ -98,6 +101,7 @@ public class RecipeActivity extends Activity {
             showRecipe(contentUri);
         }
     }
+    // [END onNewIntent_snippet]
 
     @Override
     public void onStart(){
