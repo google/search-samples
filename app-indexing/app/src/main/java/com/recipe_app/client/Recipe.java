@@ -16,10 +16,7 @@
 
 package com.recipe_app.client;
 
-import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 
 import com.recipe_app.client.database.RecipeIngredientTable;
 import com.recipe_app.client.database.RecipeInstructionsTable;
