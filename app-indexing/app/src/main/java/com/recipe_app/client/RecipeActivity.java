@@ -46,7 +46,6 @@ import com.google.firebase.appindexing.FirebaseAppIndex;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.Indexable;
 import com.google.firebase.appindexing.builders.Actions;
-import com.google.firebase.appindexing.builders.Indexables;
 import com.recipe_app.R;
 import com.recipe_app.client.content_provider.RecipeContentProvider;
 import com.recipe_app.client.database.RecipeTable;
@@ -117,48 +116,28 @@ public class RecipeActivity extends Activity {
                     .setDescription(recipe.getDescription())
                     .build();
 
-            FirebaseAppIndex.getInstance().update(recipeToIndex);
-
-            Task<Void> task = FirebaseUserActions.getInstance().start(getViewAction());
-
+            Task<Void> task = FirebaseAppIndex.getInstance().update(recipeToIndex);
             task.addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "App Indexing API: Successfully loaded recipe start view for "
-                            + recipe.getTitle() + " to index");
+                    Log.d(TAG, "App Indexing API: Successfully added " + recipe.getTitle() + " to index");
                 }
             });
-
             task.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    Log.e(TAG, "App Indexing API: There was an error loading recipe start view" +
-                            " to index. " + exception.getMessage());
+                    Log.e(TAG, "Failed to add " + recipe.getTitle() + " to index. " + exception.getMessage());
                 }
             });
+
+            FirebaseUserActions.getInstance().start(getViewAction());
         }
     }
 
     @Override
     public void onStop(){
         if (recipe != null) {
-            Task<Void> task = FirebaseUserActions.getInstance().end(getViewAction());
-
-            task.addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "App Indexing API: Successfully loaded recipe end view for "
-                            + recipe.getTitle() + " to index");
-                }
-            });
-
-            task.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Log.e(TAG, "App Indexing API: There was an error loading recipe end view to index."
-                            + exception.getMessage());
-                }
-            });
+            FirebaseUserActions.getInstance().end(getViewAction());
         }
         super.onStop();
     }
