@@ -27,15 +27,6 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Holo.NoActionBar">
-            <intent-filter android:label="@string/app_name" android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "http://recipe-app.com/recipe" -->
-                <data android:scheme="http"
-                    android:host="recipe-app.com"
-                    android:pathPrefix="/recipe" />
-            </intent-filter>
         </activity>
 
         <provider
@@ -43,5 +34,4 @@
             android:authorities="com.recipe_app" >
         </provider>
     </application>
-
 </manifest>

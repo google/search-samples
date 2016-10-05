@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- [START manifest_snippet] -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.recipe_app" >
 
@@ -9,7 +8,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/CustomActionBarTheme" >
-        <!-- [START_EXCLUDE] -->
 
         <activity
             android:name=".client.HomeActivity"
@@ -21,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- [END_EXCLUDE] -->
 
         <activity
             android:name=".client.RecipeActivity"
@@ -29,8 +26,6 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Holo.NoActionBar">
-            <!-- [START_EXCLUDE] -->
-            <!--[START intent_snippet]-->
             <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -39,21 +34,23 @@
                 <data android:scheme="http"
                     android:host="recipe-app.com"
                     android:pathPrefix="/recipe" />
-                <!--[END intent_snippet]-->
-                <!--[START https_filter_snippet]-->
-                <data android:scheme="https"
-                    android:host="recipe-app.com"
-                    android:pathPrefix="/recipe" />
-                <!--[END https_filter_snippet]-->
             </intent-filter>
-
         </activity>
+
+        <!-- [START refresh_index] -->
+        <service android:name=".client.AppIndexingService"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.APPINDEXING">
+            <intent-filter>
+                <action android:name="com.google.firebase.appindexing.UPDATE_INDEX" />
+            </intent-filter>
+        </service>
+        <!-- [END refresh_index] -->
 
         <provider
             android:name=".client.content_provider.RecipeContentProvider"
             android:authorities="com.recipe_app" >
         </provider>
-        <!-- [END_EXCLUDE] -->
     </application>
+
 </manifest>
-<!-- [END manifest_snippet] -->

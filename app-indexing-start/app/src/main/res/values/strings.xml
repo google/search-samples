@@ -2,5 +2,8 @@
 <resources>
 
     <string name="app_name">Recipe App</string>
-
+    <string name="dialog_cancel_note">Cancel</string>
+    <string name="dialog_delete_note">Delete</string>
+    <string name="dialog_add_note">Add</string>
+    <string name="dialog_update_note">Update</string>
 </resources>

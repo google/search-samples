@@ -20,14 +20,15 @@ import android.database.Cursor;
 
 import com.recipe_app.client.database.RecipeIngredientTable;
 import com.recipe_app.client.database.RecipeInstructionsTable;
+import com.recipe_app.client.database.RecipeNoteTable;
 import com.recipe_app.client.database.RecipeTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The {@link com.recipe_app.client.Recipe} class stores all the information about a recipe including a
- * list of ingredients and all the steps required to prepare it.
+ * The {@link com.recipe_app.client.Recipe} class stores all the information about a recipe
+ * including a list of ingredients and all the steps required to prepare it.
  */
 public class Recipe {
 
@@ -38,6 +39,7 @@ public class Recipe {
     private String photo;
     private String description;
     private String prepTime;
+    private Note note;
 
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
     private List<Step> instructions = new ArrayList<Step>();
@@ -50,6 +52,14 @@ public class Recipe {
         return id;
     }
 
+    public Note getNote() {
+        return note;
+    }
+
+    public void setNote(Note note) {
+        this.note = note;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -58,8 +68,12 @@ public class Recipe {
         this.title = title;
     }
 
-    public String getUrl() {
+    public String getRecipeUrl() {
         return URL_BASE + this.id;
+    }
+
+    public String getNoteUrl() {
+        return URL_BASE + this.id + "/note";
     }
 
     public String getPhoto() {
@@ -106,11 +120,12 @@ public class Recipe {
      * Static helper method for populating attributes from a database cursor.
      *
      * @param cursor The cursor returned from a database query.
-     * @return A new {@link com.recipe_app.client.Recipe} object with the basic attributes populated.
+     * @return A new {@link com.recipe_app.client.Recipe} object with the basic attributes
+     * populated.
      */
     public static Recipe fromCursor(Cursor cursor) {
         Recipe recipe = new Recipe(null);
-        for (int c=0; c<cursor.getColumnCount(); c++) {
+        for (int c = 0; c < cursor.getColumnCount(); c++) {
             String columnName = cursor.getColumnName(c);
             if (columnName.equals(RecipeTable.ID_COLUMN)) {
                 recipe.id = cursor.getString(c);
@@ -125,6 +140,36 @@ public class Recipe {
             }
         }
         return recipe;
+    }
+
+    public static class Note {
+        private String text;
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        /**
+         * Static helper method for populating attributes from a database cursor.
+         *
+         * @param cursor The cursor returned from a database query.
+         * @return A new {@link com.recipe_app.client.Recipe.Note} object with all attributes
+         * populated.
+         */
+        public static Note fromCursor(Cursor cursor) {
+            Note note = new Note();
+            for (int c = 0; c < cursor.getColumnCount(); c++) {
+                String columnName = cursor.getColumnName(c);
+                if (columnName.equals(RecipeNoteTable.TEXT_COLUMN)) {
+                    note.setText(cursor.getString(c));
+                }
+            }
+            return note;
+        }
     }
 
     public static class Ingredient {
@@ -151,11 +196,12 @@ public class Recipe {
          * Static helper method for populating attributes from a database cursor.
          *
          * @param cursor The cursor returned from a database query.
-         * @return A new {@link com.recipe_app.client.Recipe.Ingredient} object with all attributes populated.
+         * @return A new {@link com.recipe_app.client.Recipe.Ingredient} object with all
+         * attributes populated.
          */
         public static Ingredient fromCursor(Cursor cursor) {
             Ingredient ingredient = new Ingredient();
-            for (int c=0; c<cursor.getColumnCount(); c++) {
+            for (int c = 0; c < cursor.getColumnCount(); c++) {
                 String columnName = cursor.getColumnName(c);
                 if (columnName.equals(RecipeIngredientTable.AMOUNT_COLUMN)) {
                     ingredient.setAmount(cursor.getString(c));
@@ -191,11 +237,12 @@ public class Recipe {
          * Static helper method for populating attributes from a database cursor.
          *
          * @param cursor The cursor returned from a database query.
-         * @return A new {@link com.recipe_app.client.Recipe.Step} object with all attributes populated.
+         * @return A new {@link com.recipe_app.client.Recipe.Step} object with all attributes
+         * populated.
          */
         public static Step fromCursor(Cursor cursor) {
             Step step = new Step();
-            for (int c=0; c<cursor.getColumnCount(); c++) {
+            for (int c = 0; c < cursor.getColumnCount(); c++) {
                 String columnName = cursor.getColumnName(c);
                 if (columnName.equals(RecipeInstructionsTable.PHOTO_COLUMN)) {
                     step.setPhoto(cursor.getString(c));

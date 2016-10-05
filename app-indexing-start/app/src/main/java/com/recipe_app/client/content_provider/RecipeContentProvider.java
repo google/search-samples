@@ -28,6 +28,7 @@ import android.net.Uri;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.recipe_app.client.database.RecipeIngredientTable;
 import com.recipe_app.client.database.RecipeInstructionsTable;
+import com.recipe_app.client.database.RecipeNoteTable;
 import com.recipe_app.client.database.RecipeTable;
 
 /**
@@ -43,6 +44,8 @@ public class RecipeContentProvider extends ContentProvider {
     private static final int RECIPE_ID = 20;
     private static final int RECIPE_INGREDIENTS = 30;
     private static final int RECIPE_INSTRUCTIONS = 40;
+    private static final int RECIPE_NOTES = 50;
+
 
     private static final String AUTHORITY = "com.recipe_app";
 
@@ -51,10 +54,12 @@ public class RecipeContentProvider extends ContentProvider {
             + "/" + BASE_PATH);
 
     private static final UriMatcher sURIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
     static {
         sURIMatcher.addURI(AUTHORITY, BASE_PATH, RECIPES);
         sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/ingredients/*", RECIPE_INGREDIENTS);
         sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/instructions/*", RECIPE_INSTRUCTIONS);
+        sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/notes/*", RECIPE_NOTES);
         sURIMatcher.addURI(AUTHORITY, BASE_PATH + "/*", RECIPE_ID);
     }
 
@@ -70,22 +75,32 @@ public class RecipeContentProvider extends ContentProvider {
 
         int uriType = sURIMatcher.match(uri);
         if (uriType == RECIPES) {
+            return getAllRecipes(projection);
         } else if (uriType == RECIPE_ID) {
             return getRecipe(uri);
         } else if (uriType == RECIPE_INGREDIENTS) {
             return getIngredientsByRecipe(uri);
         } else if (uriType == RECIPE_INSTRUCTIONS) {
             return getInstructionsByRecipe(uri);
+        } else if (uriType == RECIPE_NOTES) {
+            return getNoteByRecipe(uri);
         } else {
             throw new IllegalArgumentException("Unknown URI: " + uri);
         }
-        return null;
+    }
+
+    public Cursor getAllRecipes(String[] projection) {
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(RecipeTable.TABLE + ", " + RecipeNoteTable.TABLE);
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = queryBuilder.query(db, projection, null, null, null, null, null);
+        return cursor;
     }
 
     public Cursor getRecipe(Uri uri) {
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(RecipeTable.TABLE);
-        String[] projection = { RecipeTable.ID, RecipeTable.TITLE,
+        String[] projection = {RecipeTable.ID, RecipeTable.TITLE,
                 RecipeTable.DESCRIPTION, RecipeTable.PHOTO,
                 RecipeTable.PREP_TIME};
         SQLiteDatabase db = database.getReadableDatabase();
@@ -101,7 +116,8 @@ public class RecipeContentProvider extends ContentProvider {
     public Cursor getIngredientsByRecipe(Uri uri) {
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(RecipeTable.TABLE + ", " + RecipeIngredientTable.TABLE);
-        queryBuilder.appendWhere(RecipeTable.ID + "='" + uri.getLastPathSegment() + "' AND " + RecipeIngredientTable.RECIPE_ID + "=" + RecipeTable.ID + "");
+        queryBuilder.appendWhere(RecipeTable.ID + "='" + uri.getLastPathSegment() + "' AND " +
+                RecipeIngredientTable.RECIPE_ID + "=" + RecipeTable.ID);
         String[] projection = {RecipeIngredientTable.AMOUNT, RecipeIngredientTable.DESCRIPTION};
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = queryBuilder.query(db, projection, null, null, null, null, null);
@@ -112,12 +128,49 @@ public class RecipeContentProvider extends ContentProvider {
     public Cursor getInstructionsByRecipe(Uri uri) {
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(RecipeTable.TABLE + ", " + RecipeInstructionsTable.TABLE);
-        queryBuilder.appendWhere(RecipeTable.ID + "='" + uri.getLastPathSegment() + "' AND " + RecipeInstructionsTable.RECIPE_ID + "=" + RecipeTable.ID + "");
-        String[] projection = {RecipeInstructionsTable.NUM, RecipeInstructionsTable.DESCRIPTION, RecipeInstructionsTable.PHOTO};
+        queryBuilder.appendWhere(RecipeTable.ID + "='" + uri.getLastPathSegment() + "' AND " +
+                RecipeInstructionsTable.RECIPE_ID + "=" + RecipeTable.ID);
+        String[] projection = {RecipeInstructionsTable.NUM, RecipeInstructionsTable.DESCRIPTION,
+                RecipeInstructionsTable.PHOTO};
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = queryBuilder.query(db, projection, null, null, null, null, null);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
+    }
+
+    public Cursor getNoteByRecipe(Uri uri) {
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(RecipeTable.TABLE + ", " + RecipeNoteTable.TABLE);
+        queryBuilder.appendWhere(RecipeTable.ID + "='" + uri.getLastPathSegment() + "' AND " +
+                RecipeNoteTable.RECIPE_ID + "=" + RecipeTable.ID);
+        String[] projection = {RecipeNoteTable.TEXT};
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = queryBuilder.query(db, projection, null, null, null, null, null);
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
+    }
+
+    public Uri insertNoteForRecipe(Uri uri, ContentValues values) {
+        String sql = "INSERT INTO `" + RecipeNoteTable.TABLE + "` (`" + RecipeNoteTable
+                .RECIPE_ID_COLUMN + "`, `" + RecipeNoteTable.TEXT_COLUMN + "`) VALUES ('" + uri
+                .getLastPathSegment() + "', '" + values.get(RecipeNoteTable.TEXT_COLUMN) + "')";
+        database.getWritableDatabase().execSQL(sql);
+        return uri;
+    }
+
+    public int deleteNoteForRecipe(Uri uri) {
+        String sql = "DELETE FROM `" + RecipeNoteTable.TABLE + "` WHERE `" + RecipeNoteTable
+                .RECIPE_ID_COLUMN + "` = '" + uri.getLastPathSegment() + "'";
+        database.getWritableDatabase().execSQL(sql);
+        return 1;
+    }
+
+    public int updateNoteForRecipe(Uri uri, ContentValues values) {
+        String sql = "UPDATE `" + RecipeNoteTable.TABLE + "` SET `" + RecipeNoteTable.TEXT_COLUMN
+                + "` = '" + values.get(RecipeNoteTable.TEXT_COLUMN) + "' where `" +
+                RecipeNoteTable.RECIPE_ID_COLUMN + "` = '" + uri.getLastPathSegment() + "'";
+        database.getWritableDatabase().execSQL(sql);
+        return 1;
     }
 
     @Override
@@ -127,16 +180,28 @@ public class RecipeContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        int uriType = sURIMatcher.match(uri);
+        if (uriType == RECIPE_NOTES) {
+            return insertNoteForRecipe(uri, values);
+        }
         return null;
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
+        int uriType = sURIMatcher.match(uri);
+        if (uriType == RECIPE_NOTES) {
+            return deleteNoteForRecipe(uri);
+        }
         return 0;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        int uriType = sURIMatcher.match(uri);
+        if (uriType == RECIPE_NOTES) {
+            return updateNoteForRecipe(uri, values);
+        }
         return 0;
     }
 
