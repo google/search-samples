@@ -1,0 +1,60 @@
+{
+    "title": "Chicken Noodle Soup",
+    "photo": "https://storage.googleapis.com/recipe-app/img/recipes/chicken-soup.jpg",
+    "description": "Made entirely from scratch, this chicken noodle soup recipe can cure any common cold. Just like how grammy used to make it.",
+    "prep_time": "45 minutes",
+    "prep_time_code": "PT45M",
+    "ingredients": [{
+        "name": "Vegetable oil",
+        "amount": "1 T"
+    },{
+        "name": "Large Onion",
+        "amount": "1"
+    },{
+        "name": "Chicken pieces",
+        "amount": "3 lbs"
+    },{
+        "name": "Water",
+        "amount": "8 cup"
+    },{
+        "name": "Bay Leaf",
+        "amount": "1"
+    },{
+        "name": "Salt",
+        "amount": "2 tsp"
+    },{
+        "name": "Large carrot",
+        "amount": "1"
+    },{
+        "name": "Medium parsnip, diced",
+        "amount": "1"
+    },{
+        "name": "Stalk of Celery",
+        "amount": "1"
+    },{
+        "name": "Dried egg noodle",
+        "amount": "3 oz"
+    },{
+        "name": "Fresh dill",
+        "preparation": "finely chopped",
+        "amount": "1 T",
+        "category": "garnish"
+    }],
+    "instructions": [{
+        "description": "In a large and heavy pot over medium-high heat, heat the vegetable oil. Add the onion and saute it for 3 to 4 minutes, until beginning to take on color at edges. "
+    },{
+        "description": "Add the chicken pieces. Cook chicken parts until lightly browned."
+    },{
+        "description": "Add water, bay leaf, table salt and some freshly ground black pepper and bring the mixture to a boil."
+    },{
+        "description": "Reduce the heat to a simmer and skim the foam that may form at the top. Simmer pot gently, partially covered, for 20 minutes."
+    },{
+        "description": "Transfer chicken parts to a plate to cool a bit before handling. Break apart into little pieces once it's cool enough to handle."
+    },{
+        "description": "Set a fine-mesh strainer over a bowl and pour broth through it."
+    },{
+        "description": "Add diced vegetables and simmer them until they’re firm-tender, about 5 minutes. Add dried noodles and cook them according to package directions, usually 6 to 9 minutes."
+    },{
+        "description": "Add chicken pieces just until they have rewarmed through. Garnish with dill or parsley and serve."
+    }]
+}

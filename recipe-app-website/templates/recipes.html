@@ -1,0 +1,45 @@
+    {# NOTE: Indenting here may look odd, but it is because this template is optimized
+      for the user viewing HTML source on the page #}
+    {% extends 'base.html' %}
+    {% block header %}
+    <link rel="stylesheet" href="/css/allrecipes.css" />
+    <header>
+      <div class="inner">
+        <a href="/"><img src="/img/logo.png" style="height:70px;width:188px"/></a>
+        <div id="search">
+          <form action="/search" method="GET">
+            <input type="text" name="q" placeholder="Search for recipes" value="{{query}}" />
+          </form>
+        </div>
+         <h2> Showing all <strong>{{num_results}}</strong> recipes</h2>
+      </div>
+    </header>
+    {% endblock %}
+    {% block content %}
+    {% if results|length > 0 %}
+    <ol id="results">
+      {% for result in results %}
+      <li>
+        <div class="result-container">
+          <div class="result-thumb">
+            <a href="/recipe/{{result.id}}"><img class="centered-and-cropped" style="border-radius:50%" align="top" src="{{result.photo}}" />
+            </a>
+          </div>
+          <div class="result-content">
+            <h3 class="result-title"> <a href="/recipe/{{result.id}}">{{result.title}}</a></h3>
+            <div id="time">{{result.prep_time}}</div>
+            <p> {{result.description|safe}} </p>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <section>
+      <div class="inner">
+        <h2><strong>No recipes found </strong></h2>
+      </div>
+    </section>
+    {% endif %}
+    <div class="clear"></div>
+    {% endblock %}
