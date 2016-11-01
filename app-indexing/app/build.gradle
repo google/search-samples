@@ -22,7 +22,7 @@ android {
 dependencies {
     compile 'com.android.support:support-v13:23.3.0'
     compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.google.android.gms:play-services-appindexing:9.4.0'
+    compile 'com.google.firebase:firebase-appindexing:10.0.0'
     compile group:'com.squareup.picasso', name:'picasso', version:'2.3.2'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }
