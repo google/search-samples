@@ -1,22 +1,22 @@
     {# NOTE: Indenting here may look odd, but it is because this template is optimized
       for the user viewing HTML source on the page #}
-    {% extends 'searchable.html' %}
+    {% extends 'amp-searchable.html' %}
     {% block meta %}
-    <link rel="alternate" href="android-app://com.recipe_app/http/recipe-app.com/recipe/{{recipe.id}}" />
-    <link rel="stylesheet" href="/css/recipe.css" />
-    <link rel="amphtml" href="/recipe/amp/{{recipe.id}}" />
+    <link rel="canonical" href="/recipe/{{recipe.id}}" />
 
     {% endblock %}
     {% block content %}
     <section>
-      <img src="{{recipe.photo}}" width="100%"/>
+      <amp-img src="{{recipe.photo}}" layout="responsive" width="620px" height="360px"></amp-img>
       <h2 class="overlay">
         <span>{{recipe.title}}</span>
         <div id="time">{{recipe.prep_time}}</div>
       </h2>
-      <div class="edge"></div>
       <div class="inner">
         <table>
+          <tr>
+            <td id="description">{{recipe.description|safe}}</td>
+          </tr>
           <tr>
             <td id="ingredients">
               <h3>Ingredients</h3>
@@ -36,7 +36,6 @@
               {% endif %}
               {% endfor %}
             </td>
-            <td style="vertical-align:top">{{recipe.description|safe}}</td>
           </tr>
         </table>
         <div id="steps">

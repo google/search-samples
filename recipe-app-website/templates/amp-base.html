@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <style amp-custom>
+    body {
+      background-color: rgb(193, 211, 223);
+      font-family: 'Roboto', HelveticaNeue-Light, Helvetica, sans-serif;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    h1 {
+      background-image: url(../img/logo.png);
+      background-repeat: no-repeat;
+      background-size: 50px;
+      line-height: 50px;
+      color: #6d4;
+      font-weight: 200;
+      margin: 0;
+      padding: 0 0 0 55px;
+      font-size: 1.6em;
+    }
+
+    h2 {
+      color: black;
+      font-weight: 300;
+      margin: 0;
+      font-size: 1.7em;
+    }
+
+    h2.overlay {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+      color: white;
+      font-weight: 100;
+      position: absolute;
+      height: 150px;
+      top: 0px;
+      width: 100%;
+      padding: 1% 60% 0% 2%;
+      text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+      font-size: 2em;
+    }
+
+    #time {
+      font-size: 0.5em;
+      background-image: url('/img/timer.png');
+      background-size: 16px;
+      background-repeat: no-repeat;
+      padding-left: 22px;
+      margin: 0.7em 0;
+      font-weight: 300;
+    }
+
+    header {
+      background-color: rgb(81, 139, 165);
+      height: 200px;
+    }
+
+    header .inner {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    #logo {
+      height: 50px;
+    }
+
+    #search {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      font-weight: 200;
+      color: rgba(255,255,255,0.7);
+      text-align: right;
+    }
+
+    #search strong {
+      font-weight: 300;
+      color: white;
+    }
+
+    #search input[name=q] {
+      width: 140px;
+      border: 0;
+      font-size: 0.9em;
+      font-weight: 100;
+      padding: 0.2em 6px 0.5em 28px;
+      color: white;
+      background-color: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      background-image: url('/img/ic_search_50_white_48dp.png');
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+
+    #search.results input[name=q] {
+      width: 242px;
+      padding-left: 6px;
+      background-image: none;
+    }
+
+    input:focus{
+        outline: 0;
+    }
+
+    section {
+      position: relative;
+      width: 100%;
+      background: #ffe;
+      box-shadow: 0px 1px 8px rgba(0,0,0,0.4);
+      margin: -110px auto 0.5em auto;
+      padding: 0 0 3em 0;
+      font-size: 0.9em;
+      min-height: 200px;
+    }
+
+    section .inner {
+      padding: 2em 3em 1em 3em;
+      border-radius: 2px;
+      font-size: 0.9em;
+      color: #775;
+    }
+
+    section h3 {
+      font-weight: 400;
+      font-size: 1.5em;
+      margin: 0 0 1em 0;
+    }
+
+    footer {
+      width: 100%;
+      margin: 0 auto 50px auto;
+      font-size: 0.8em;
+      color: #6D8799;
+      text-align: center;
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 1em;
+    }
+
+    a {
+      color: #2b1;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      border-bottom: 1px solid transparent;
+    }
+
+    header a:hover {
+      border-bottom: 0;
+    }
+
+    footer a {
+      color: #00A5ED;
+    }
+
+    footer a:hover {
+      border-bottom: 1px solid #00A5ED;
+    }
+
+    .search_results li {
+      margin: 1em 0;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    a.badge {
+      position: absolute;
+      bottom: 2px;
+      right: 10px;
+    }
+
+     #ingredients {
+      width: 300px;
+      vertical-align: top;
+    }
+
+    #ingredients h3 {
+      background-image: url(/img/ingredients.png);
+      background-repeat: no-repeat;
+      background-size: 20px;
+      padding-left: 26px;
+    }
+
+    #ingredients h4 {
+      margin: 2em 0 0.5em 0;
+    }
+
+    #ingredients .amount {
+      font-weight: bolder;
+      padding-right: 1em;
+    }
+
+    #ingredients table {
+      margin-bottom: 2em;
+    }
+
+    #ingredients table:last-child
+    {
+      margin-bottom: 0;
+    }
+
+    #steps {
+      margin-top: 2em;
+    }
+
+    #steps h3 {
+      background-image: url(/img/instructions.png);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      padding-left: 30px;
+    }
+
+    #steps ol {
+      padding: 0 2em;
+    }
+
+    #steps li {
+      margin: 1em 0;
+    }
+
+    .edge {
+      background-image: url(/img/edge.png);
+      background-size: 18px;
+      width: 100%;
+      height: 10px;
+      position: absolute;
+      top: 350px;
+    }
+
+    .hidden-button {
+      display: none;
+    }
+
+    #description {
+      display: block;
+      padding:8px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+    }
+    </style>
+
+    {% block meta %}{% endblock %}
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  </head>
+  <body>
+    {% block header %}
+    <header>
+      <div class="inner">
+        <a href="/"><amp-img id="logo" src="/img/logo.png"/></a>
+      </div>
+    </header>
+    {% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <footer>
+      <a href="/allrecipes">View all recipes</a> | <a target="_blank" href="https://github.com/google/search-samples/tree/master/recipe-app-website">View the sample app code</a> hosted by Google on Github under the <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2</a> license.
+    </footer>
+    {% endblock %}
+  </body>
+</html>

@@ -40,5 +40,17 @@ class TestMain(unittest.TestCase):
         files = main.load_recipe_names()
         self.assertEqual(0, len(files))
 
+    def test_recipe_template_for_url(self):
+        url = 'amp/'
+        self.assertEqual(main.recipe_template_for_url(url), ('recipe.html', ''))
+
+        # amp template requested
+        url = 'amp/soup-recipe-id'
+        self.assertEqual(main.recipe_template_for_url(url), ('amp-recipe.html', 'soup-recipe-id'))
+
+        # regular template requested
+        url = 'soup-recipe-id'
+        self.assertEqual(main.recipe_template_for_url(url), ('recipe.html', 'soup-recipe-id'))
+
 if __name__ == '__main__':
     unittest.main()

@@ -36,6 +36,16 @@ def load_recipe_names():
             all_recipe_ids.append(file.rsplit('.', 1)[0])
     return sorted(all_recipe_ids)
 
+# TODO(zshahzad): Make website mobile-friendly/responsive so
+# AMP/non-AMP pages can be consolidated into one recipe.html
+# template and this isn't needed
+def recipe_template_for_url(recipe_id):
+        if recipe_id.startswith('amp/'):
+            recipe_id = recipe_id.rsplit('amp/', 1)[1]
+            if recipe_id:
+                return 'amp-recipe.html', recipe_id
+        return 'recipe.html', recipe_id
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         template_values = {
@@ -67,7 +77,9 @@ class RecipePage(webapp2.RequestHandler):
         num_results = 0
         if query:
             num_results = 1
-    	recipe = load_recipe(recipe_id)
+
+        template_url, recipe_id = recipe_template_for_url(recipe_id)
+        recipe = load_recipe(recipe_id)
 
         ingredient_sections = ['']
         ingredients_by_section = {'':[]}
@@ -92,7 +104,7 @@ class RecipePage(webapp2.RequestHandler):
             'query': query,
             'num_results': num_results
         }
-        template = JINJA_ENVIRONMENT.get_template('recipe.html')
+        template = JINJA_ENVIRONMENT.get_template(template_url)
         self.response.write(template.render(template_values))
 
 class SearchResultsPage(webapp2.RequestHandler):

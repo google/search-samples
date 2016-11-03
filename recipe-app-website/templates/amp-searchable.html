@@ -1,0 +1,24 @@
+    {# NOTE: Indenting here may look odd, but it is because this template is optimized
+      for the user viewing HTML source on the page #}
+    {% extends 'amp-base.html' %}
+    {% block header %}
+    <header>
+      <div class="inner">
+        <a href="/"><amp-img src="/img/logo.png" height="70px" width="188px"/></a>
+        {% if num_results > 0 %}
+        <div id="search" class="results">
+          <form action="/search" method="GET" target="_top">
+            Found <strong>{{num_results}}</strong> result{%if num_results != 1%}s{%endif%} for <input type="text" name="q" placeholder="Search for recipes" value="{{query}}" />
+          </form>
+        </div>
+        {% else %}
+        <div id="search">
+          <form action="/search" method="GET" target="_top">
+            <input type="text" name="q" placeholder="Search" value="{{query}}" />
+            <input type="submit" class="hidden-button" />
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </header>
+    {% endblock %}
