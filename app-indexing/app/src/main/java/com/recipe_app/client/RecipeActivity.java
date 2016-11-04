@@ -101,8 +101,13 @@ public class RecipeActivity extends Activity {
     // [END onNewIntent_snippet]
 
     private Action getViewAction() {
-        return Actions.newView(recipe.getTitle(),
-                BASE_URL.buildUpon().appendPath(recipe.getId()).build().toString());
+        try {
+            return Actions.newView(recipe.getTitle(),
+                    BASE_URL.buildUpon().appendPath(recipe.getId()).build().toString());
+        } catch (FirebaseAppIndexingInvalidArgumentException e) {
+            Log.e(TAG, e.getMessage());
+            return null;
+        }
     }
 
     @Override
