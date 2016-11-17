@@ -137,6 +137,7 @@ public class RecipeActivity extends Activity {
                 .build();
 
         Task<Void> task = FirebaseAppIndex.getInstance().update(noteToIndex);
+        // [START_EXCLUDE]
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -151,6 +152,7 @@ public class RecipeActivity extends Activity {
                         .getMessage());
             }
         });
+        // [END_EXCLUDE]
     }
     // [END index_note]
 
