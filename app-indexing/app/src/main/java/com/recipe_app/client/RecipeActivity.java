@@ -98,8 +98,8 @@ public class RecipeActivity extends Activity {
         super.onStart();
         if (mRecipe != null) {
             // If you’re logging an action on content that hasn’t been added to the index yet,
-            // add it first with FirebaseAppIndex.getInstance().update(getIndexable());
-            // indexRecipe()
+            // add it first with an update call;
+            indexRecipe();
             FirebaseUserActions.getInstance().start(getRecipeViewAction());
         }
     }
